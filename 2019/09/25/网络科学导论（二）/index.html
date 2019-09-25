@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="网络科学导论（二）,读书笔记,图论,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="网络科学导论（二）2.1 图论起源图论源于著名的哥尼斯堡七桥问题，在1736年由欧拉提出，他将一类数学问题抽象成一组点集和关联的边集，忽略了许多现实场景，对实际问题高度抽象成了图。">
+<meta name="keywords" content="网络科学导论（二）,读书笔记,图论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络科学导论（二）">
+<meta property="og:url" content="http://yoursite.com/2019/09/25/网络科学导论（二）/index.html">
+<meta property="og:site_name" content="Shadoowz">
+<meta property="og:description" content="网络科学导论（二）2.1 图论起源图论源于著名的哥尼斯堡七桥问题，在1736年由欧拉提出，他将一类数学问题抽象成一组点集和关联的边集，忽略了许多现实场景，对实际问题高度抽象成了图。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-25T13:38:55.312Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络科学导论（二）">
+<meta name="twitter:description" content="网络科学导论（二）2.1 图论起源图论源于著名的哥尼斯堡七桥问题，在1736年由欧拉提出，他将一类数学问题抽象成一组点集和关联的边集，忽略了许多现实场景，对实际问题高度抽象成了图。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/25/网络科学导论（二）/">
+
+
+
+
+
+  <title>网络科学导论（二） | Shadoowz</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shadoowz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/25/网络科学导论（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shadoowz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shadoowz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网络科学导论（二）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-25T09:09:48+08:00">
+                2019-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="网络科学导论（二）"><a href="#网络科学导论（二）" class="headerlink" title="网络科学导论（二）"></a>网络科学导论（二）</h1><h2 id="2-1-图论起源"><a href="#2-1-图论起源" class="headerlink" title="2.1 图论起源"></a>2.1 图论起源</h2><p>图论源于著名的哥尼斯堡七桥问题，在1736年由欧拉提出，他将一类数学问题抽象成一组点集和关联的边集，忽略了许多现实场景，对实际问题高度抽象成了图。<br><a id="more"></a></p>
+<h2 id="2-2-网络的图表示"><a href="#2-2-网络的图表示" class="headerlink" title="2.2 网络的图表示"></a>2.2 网络的图表示</h2><h3 id="2-2-1-图的定义"><a href="#2-2-1-图的定义" class="headerlink" title="2.2.1 图的定义"></a>2.2.1 图的定义</h3><blockquote>
+<p>有些人用相同的词汇表示不同的意思，有些人用不同的词汇表示相同的意思</p>
+<p>图论对我来说也是一个迷,作为纯数学的一个分支，图论大体上分为两个部分：一部分几乎是一看就懂，另一部分则晦涩难懂。我从一本教材中学会了一看就懂的部分，但是学了好久也没搞懂晦涩难懂的那部分，最后只好承认那部分并不怎么有趣。</p>
+</blockquote>
+<hr>
+<p>一个具体的网络可以抽象成一个由点集<em>V</em>和边集<em>E</em>组成的图<em>G=(V,E)</em>,顶点数记为N=|V|，边数记为M=|E|</p>
+<h3 id="2-2-2-图的类型"><a href="#2-2-2-图的类型" class="headerlink" title="2.2.2 图的类型"></a>2.2.2 图的类型</h3><p>图可根据边是否有向和是否有权分为四种</p>
+<h3 id="2-2-3-简单图"><a href="#2-2-3-简单图" class="headerlink" title="2.2.3 简单图"></a>2.2.3 简单图</h3><p>本书重点介绍无权无向网络,任意两点间没有重边，也没有自环现象。<br>简单图有两个极端，空图和完全图，空图是没有任何节点和连边或是只有节点而没有连边的图；完全图是指是指图中任意的两点间都有一条边，完全图中边的数目一般是和N<sup>2</sup>同阶的，而在现实中图中的边的数目一般是和N同阶的，这样的网络称为稀疏网络。</p>
+<h2 id="2-3-图的计算机表示"><a href="#2-3-图的计算机表示" class="headerlink" title="2.3 图的计算机表示"></a>2.3 图的计算机表示</h2><p>书中介绍了使用邻接矩阵和邻接表对图进行存储</p>
+<h2 id="2-4-文献共引和文献耦合"><a href="#2-4-文献共引和文献耦合" class="headerlink" title="2.4 文献共引和文献耦合"></a>2.4 文献共引和文献耦合</h2><h3 id="2-4-1-共引网络"><a href="#2-4-1-共引网络" class="headerlink" title="2.4.1 共引网络"></a>2.4.1 共引网络</h3><p>假设A文章同时引用了B，C两篇文章那么我们就认为B，C间有一条边。<br>共引矩阵的公式为</p>
+<p>$c_{ij}=\sum_{k=1}^N{a_{kj}}{a_{kj}}$ </p>
+<p>共引矩阵</p>
+<center><strong>C=(c<sub>ij</sub>)<sub>N*N</sub>=A<sup>T</sup>A</strong></center>
+在这里我想称之为共被引矩阵较为合适，因为在矩阵中c<sub>ij</sub>表示的是文章ij共被引的次数。
+
+### 2.4.2 文献耦合
+文献耦合网络是两篇文章中引用相同的文章的数目，它是共引矩阵的转置
+
+$b_{ij}=\sum_{k=1}^N{a_{ik}}{a_{jk}}$
+
+耦合矩阵
+<center><strong>B=(b<sub>ij</sub>)<sub>N*N</sub>=A<sup>T</sup>A</strong></center>
+
+<p>  两篇文章之间的共引或耦合关系一定程度上反应了两篇文章间研究的相关性，而且共引和耦合程度越大很可能意味着这种相关性越强。<br>  尽管共引和耦合在数学中的处理特别相似，特别是收到节点出边和入边数目的影响。在引文网络中，只有两篇均为强被引的文章才有可能是强被引。<br>  另一方面仅当两篇文章都大量引用其他文章时两者才有可能成为强耦合文献。</p>
+<p>  相对于文献共引来讲，文献耦合实际上是个静态的概念，一旦文章发表了，它的耦合程度就是不变的了。</p>
+<p>  在一些其他的文献上可以了解到，一般来讲文献共引可以看作是一种前瞻性的结论，而文献耦合得出的是一种回溯性的结论。</p>
+<p> <a href="http://garfield.library.upenn.edu/papers/drexelbelvergriffith92001.pdf" target="_blank" rel="noopener">From Bibliographic Coupling to Co-Citation Analysisvia Algorithmic Historio-Bibliography</a>是尤金·加菲尔德关于文献耦合的一个演讲。</p>
+<h2 id="2-5-路径与连通性"><a href="#2-5-路径与连通性" class="headerlink" title="2.5 路径与连通性"></a>2.5 路径与连通性</h2><h3 id="2-5-1-路径"><a href="#2-5-1-路径" class="headerlink" title="2.5.1 路径"></a>2.5.1 路径</h3><p>关于路径的若干个问题：</p>
+<p>1.路径（Path）：无向图G=(V,E)中的一条路径是指一个顶点序列P=v1v2….vk,其中每一对顶点v<sub>i</sub>到v<sub>j</sub>有一条边。</p>
+<p>2.回路（Circuit）：起点与终点重合的路径叫做回路</p>
+<p>3.简单路径（Simple Path）：各个顶点都互不相同的路径称为是简单的。</p>
+<p>4.圈（Circle）：一条路径P=v<sub>1</sub>v<sub>2</sub>…v<sub>k</sub>称为是一个圈，如果它满足：k&gt;2;前k-1个顶点互不相同；v<sub>1</sub>=v<sub>k</sub></p>
+<p>在技术网络中有时会故意设置一些圈，以期通过边的冗余来实现网络的鲁棒性</p>
+<h3 id="2-5-2-连通性"><a href="#2-5-2-连通性" class="headerlink" title="2.5.2 连通性"></a>2.5.2 连通性</h3><p>一个无向图称之为连通的，如果每两个节点间都至少存在两个节点。每一个不连通图都是由若干个不相交的连通片组成的。其中包含最多顶点的连通片就叫做最大连通片。</p>
+<h3 id="2-5-3-路径与连通性的邻接矩阵表示"><a href="#2-5-3-路径与连通性的邻接矩阵表示" class="headerlink" title="2.5.3 路径与连通性的邻接矩阵表示"></a>2.5.3 路径与连通性的邻接矩阵表示</h3><p>当使用<strong>A=(a<sub>ij</sub>)<sub>N*N</sub></strong>表示一个矩阵那么<br>$N^{(2)}_{ij}={\sum^N_{k=1}a_{ik}a_{kj}}=(A^2)_{ij}$可以表示两个节点ij之间长度为2的不同路径的数目，接着推导下去可得，两点间距离为r的不同路径的条数为$N^{(r)}_{ij}=(A^r)_{ij}$</p>
+<blockquote>
+<p>一个N阶方阵A称为是可约的（Reducible），如果存在矩阵A的某种置换{1,2,…,N}-&gt;{i<sub>1</sub>,i<sub>2</sub>,…,i<sub>n</sub>}，即把矩阵A中第j行和j列变为第i<sub>j</sub>行和i<sub>j</sub>列，使置换后的矩阵&nbsp;&nbsp;$\overline{A}=(\overline{a}_{ij})_{N*N}$满足</p>
+<blockquote>
+<p>$\overline{a}_{ij}=0$&nbsp;&nbsp;&nbsp; i=$\mu$+1,$\mu$+2,…,N;</p>
+</blockquote>
+<p>其中$\mu$为某个小于N的正整数。否则就称矩阵A是不可约的。</p>
+</blockquote>
+<p><strong>一个网络是连通的，当且仅当其邻接矩阵是不可约的</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络科学导论（二）/" rel="tag"># 网络科学导论（二）</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+            <a href="/tags/图论/" rel="tag"># 图论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/27/网络科学导论/" rel="next" title="网络科学导论">
+                <i class="fa fa-chevron-left"></i> 网络科学导论
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Shadoowz</p>
+              <p class="site-description motion-element" itemprop="description">我把手电筒的光亮作为唯一的朋友，双脚迈进“隐喻通道”的黑暗中</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络科学导论（二）"><span class="nav-number">1.</span> <span class="nav-text">网络科学导论（二）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-图论起源"><span class="nav-number">1.1.</span> <span class="nav-text">2.1 图论起源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-网络的图表示"><span class="nav-number">1.2.</span> <span class="nav-text">2.2 网络的图表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-图的定义"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.2.1 图的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-图的类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2.2 图的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-简单图"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.2.3 简单图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-图的计算机表示"><span class="nav-number">1.3.</span> <span class="nav-text">2.3 图的计算机表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-文献共引和文献耦合"><span class="nav-number">1.4.</span> <span class="nav-text">2.4 文献共引和文献耦合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-共引网络"><span class="nav-number">1.4.1.</span> <span class="nav-text">2.4.1 共引网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-路径与连通性"><span class="nav-number">1.5.</span> <span class="nav-text">2.5 路径与连通性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-路径"><span class="nav-number">1.5.1.</span> <span class="nav-text">2.5.1 路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-连通性"><span class="nav-number">1.5.2.</span> <span class="nav-text">2.5.2 连通性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-3-路径与连通性的邻接矩阵表示"><span class="nav-number">1.5.3.</span> <span class="nav-text">2.5.3 路径与连通性的邻接矩阵表示</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shadoowz</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
