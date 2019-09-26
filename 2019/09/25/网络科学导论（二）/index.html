@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Shadoowz">
 <meta property="og:description" content="网络科学导论（二）2.1 图论起源图论源于著名的哥尼斯堡七桥问题，在1736年由欧拉提出，他将一类数学问题抽象成一组点集和关联的边集，忽略了许多现实场景，对实际问题高度抽象成了图。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-25T13:38:55.312Z">
+<meta property="og:updated_time" content="2019-09-26T08:09:51.229Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络科学导论（二）">
 <meta name="twitter:description" content="网络科学导论（二）2.1 图论起源图论源于著名的哥尼斯堡七桥问题，在1736年由欧拉提出，他将一类数学问题抽象成一组点集和关联的边集，忽略了许多现实场景，对实际问题高度抽象成了图。">
@@ -341,7 +341,10 @@
 <h3 id="2-2-3-简单图"><a href="#2-2-3-简单图" class="headerlink" title="2.2.3 简单图"></a>2.2.3 简单图</h3><p>本书重点介绍无权无向网络,任意两点间没有重边，也没有自环现象。<br>简单图有两个极端，空图和完全图，空图是没有任何节点和连边或是只有节点而没有连边的图；完全图是指是指图中任意的两点间都有一条边，完全图中边的数目一般是和N<sup>2</sup>同阶的，而在现实中图中的边的数目一般是和N同阶的，这样的网络称为稀疏网络。</p>
 <h2 id="2-3-图的计算机表示"><a href="#2-3-图的计算机表示" class="headerlink" title="2.3 图的计算机表示"></a>2.3 图的计算机表示</h2><p>书中介绍了使用邻接矩阵和邻接表对图进行存储</p>
 <h2 id="2-4-文献共引和文献耦合"><a href="#2-4-文献共引和文献耦合" class="headerlink" title="2.4 文献共引和文献耦合"></a>2.4 文献共引和文献耦合</h2><h3 id="2-4-1-共引网络"><a href="#2-4-1-共引网络" class="headerlink" title="2.4.1 共引网络"></a>2.4.1 共引网络</h3><p>假设A文章同时引用了B，C两篇文章那么我们就认为B，C间有一条边。<br>共引矩阵的公式为</p>
-<p>$c_{ij}=\sum_{k=1}^N{a_{kj}}{a_{kj}}$ </p>
+<center>&nbsp;&nbsp;  $c_{ij}=\sum_{k=1}^N{a_{kj}}{a_{kj}}$ </center>
+
+
+
 <p>共引矩阵</p>
 <center><strong>C=(c<sub>ij</sub>)<sub>N*N</sub>=A<sup>T</sup>A</strong></center>
 在这里我想称之为共被引矩阵较为合适，因为在矩阵中c<sub>ij</sub>表示的是文章ij共被引的次数。
@@ -349,9 +352,9 @@
 ### 2.4.2 文献耦合
 文献耦合网络是两篇文章中引用相同的文章的数目，它是共引矩阵的转置
 
-$b_{ij}=\sum_{k=1}^N{a_{ik}}{a_{jk}}$
+&nbsp;&nbsp;  <center>$b_{ij}=\sum_{k=1}^N{a_{ik}}{a_{jk}}$</center>
 
-耦合矩阵
+<p>耦合矩阵</p>
 <center><strong>B=(b<sub>ij</sub>)<sub>N*N</sub>=A<sup>T</sup>A</strong></center>
 
 <p>  两篇文章之间的共引或耦合关系一定程度上反应了两篇文章间研究的相关性，而且共引和耦合程度越大很可能意味着这种相关性越强。<br>  尽管共引和耦合在数学中的处理特别相似，特别是收到节点出边和入边数目的影响。在引文网络中，只有两篇均为强被引的文章才有可能是强被引。<br>  另一方面仅当两篇文章都大量引用其他文章时两者才有可能成为强耦合文献。</p>
@@ -365,15 +368,82 @@ $b_{ij}=\sum_{k=1}^N{a_{ik}}{a_{jk}}$
 <p>4.圈（Circle）：一条路径P=v<sub>1</sub>v<sub>2</sub>…v<sub>k</sub>称为是一个圈，如果它满足：k&gt;2;前k-1个顶点互不相同；v<sub>1</sub>=v<sub>k</sub></p>
 <p>在技术网络中有时会故意设置一些圈，以期通过边的冗余来实现网络的鲁棒性</p>
 <h3 id="2-5-2-连通性"><a href="#2-5-2-连通性" class="headerlink" title="2.5.2 连通性"></a>2.5.2 连通性</h3><p>一个无向图称之为连通的，如果每两个节点间都至少存在两个节点。每一个不连通图都是由若干个不相交的连通片组成的。其中包含最多顶点的连通片就叫做最大连通片。</p>
-<h3 id="2-5-3-路径与连通性的邻接矩阵表示"><a href="#2-5-3-路径与连通性的邻接矩阵表示" class="headerlink" title="2.5.3 路径与连通性的邻接矩阵表示"></a>2.5.3 路径与连通性的邻接矩阵表示</h3><p>当使用<strong>A=(a<sub>ij</sub>)<sub>N*N</sub></strong>表示一个矩阵那么<br>$N^{(2)}_{ij}={\sum^N_{k=1}a_{ik}a_{kj}}=(A^2)_{ij}$可以表示两个节点ij之间长度为2的不同路径的数目，接着推导下去可得，两点间距离为r的不同路径的条数为$N^{(r)}_{ij}=(A^r)_{ij}$</p>
+<h3 id="2-5-3-路径与连通性的邻接矩阵表示"><a href="#2-5-3-路径与连通性的邻接矩阵表示" class="headerlink" title="2.5.3 路径与连通性的邻接矩阵表示"></a>2.5.3 路径与连通性的邻接矩阵表示</h3><p>当使用<strong>A=(a<sub>ij</sub>)<sub>N*N</sub></strong>表示一个矩阵那么</p>
+<center>$N^{(2)}_{ij}={\sum^N_{k=1}a_{ik}a_{kj}}=(A^2)_{ij}$</center>
+
+<p>可以表示两个节点ij之间长度为2的不同路径的数目，接着推导下去可得，两点间距离为r的不同路径的条数为$N^{(r)}_{ij}=(A^r)_{ij}$</p>
 <blockquote>
 <p>一个N阶方阵A称为是可约的（Reducible），如果存在矩阵A的某种置换{1,2,…,N}-&gt;{i<sub>1</sub>,i<sub>2</sub>,…,i<sub>n</sub>}，即把矩阵A中第j行和j列变为第i<sub>j</sub>行和i<sub>j</sub>列，使置换后的矩阵&nbsp;&nbsp;$\overline{A}=(\overline{a}_{ij})_{N*N}$满足</p>
 <blockquote>
 <p>$\overline{a}_{ij}=0$&nbsp;&nbsp;&nbsp; i=$\mu$+1,$\mu$+2,…,N;</p>
 </blockquote>
 <p>其中$\mu$为某个小于N的正整数。否则就称矩阵A是不可约的。</p>
+<p>上述定义可以等价的叙述为如下：若存在顺列矩阵（即每行只有一个元素为1，其他元素为0的正交矩阵）U使得：</p>
+<blockquote>
+<center>$U^TAU={\overline{A}}=\begin{bmatrix}{\overline{A}_{11}}&{\overline{A}_{12}}\\0&{\overline{A}_{22}}\end{bmatrix}$</center>
+
+</blockquote>
 </blockquote>
 <p><strong>一个网络是连通的，当且仅当其邻接矩阵是不可约的</strong></p>
+<h3 id="2-5-4-割集和Menger定理"><a href="#2-5-4-割集和Menger定理" class="headerlink" title="2.5.4 割集和Menger定理"></a>2.5.4 割集和Menger定理</h3><p>在网络科学研究中，网络结构的鲁棒性是重要课题</p>
+<blockquote>
+<p>如果在G中去除了一些节点或连边，那么图G中给定的顶点G和S是否仍然存在路径</p>
+<p>如果要使顶点<em>s</em>和顶点<em>t</em>分离（两个节点分属不同的连通片），至少要去除多少个节点或者边？</p>
+<p><strong>定理2-1(Menger定理)</strong>&nbsp;&nbsp;1）点形式：设顶点s和顶点t为图G中两个不相邻的点，则使顶点s和顶点t分别属于不同连通片所需去除的顶点的最少数目等于连接顶点s和顶点t的独立的简单路径的最大数目。</p>
+<p>2）边形式：设顶点s和顶点t为图G中两个不同的顶点，则使顶点s和顶点<br>使得一对顶点分属于两个不同连通片所需去掉的一组顶点称为这对顶点的点割集（Vertex cut set），所需去除的边集称为边割集。包含顶点数目最少或者边数最少的称为最小割集（Minimum cut set）</p>
+</blockquote>
+<h3 id="2-5-5-有向图的连通性"><a href="#2-5-5-有向图的连通性" class="headerlink" title="2.5.5 有向图的连通性"></a>2.5.5 有向图的连通性</h3><p>一个有向图称为是强连通的，如果对于图中任意一对顶点<strong>u</strong>和<strong>v</strong>都存在一条从<strong>u</strong>到<strong>v</strong>的路径，又存在一条从<strong>v</strong>到<strong>u</strong>的路径。一个有向图是弱连通的，当把所有边看作是无向的后所得到的图是连通的。</p>
+<h2 id="2-6-生成树和最小生成树"><a href="#2-6-生成树和最小生成树" class="headerlink" title="2.6 生成树和最小生成树"></a>2.6 生成树和最小生成树</h2><p>如果一个连通图不能看做一个树，那么它也可以看作是一个树添加一些边形成的。连通的无向图G的一个生成树（Spanning tree）是图G的一个子图，该子图是包含图G所有顶点的一个树。</p>
+<p>一个包含N个顶点的图可能有多个连通树。其中边权值最小的树就叫做最小生成树（Minimum spanning tree ，MST）。但最小生成树也不一定是唯一的。但如果一个图中所有边的权值都不相同，那么其最小生成树必唯一。</p>
+<p>一个顶点标志了符号的完全图$K_N$的生成树个数 $\tau(K_N)$有如下的Caylay公式：</p>
+<p><center>$\tau(K_N)=N^{N-2}$</center><br>在实际网络中，我们可以计算出构建一个连通的网络所必须的最小代价以及它们边的分布情况。</p>
+<p>上述问题可以用术语表述为：给定一个加权无向的连通图G=（V ，E，W），这里w为权值的合集。求图G的一个边的权值之和最小的连通的子图$\overline{G}=(V,\overline{E},\overline{W})$，其中$\overline{E},\overline{W}$是E和W的子集。</p>
+<p>上述的表述看似未涉及最小生成树，然而却有以下结果。</p>
+<blockquote>
+<p><strong>定理 2-2 </strong> 连通图** G=（V，E，W）的一个权值之和最小的连通子图$\overline{G}=(V,\overline{E},\overline{W})$一定是图G的一个最小生成树。</p>
+</blockquote>
+<h2 id="2-7-二分网与匹配问题"><a href="#2-7-二分网与匹配问题" class="headerlink" title="2.7 二分网与匹配问题"></a>2.7 二分网与匹配问题</h2><h3 id="2-7-1-二分网的定义"><a href="#2-7-1-二分网的定义" class="headerlink" title="2.7.1 二分网的定义"></a>2.7.1 二分网的定义</h3><p>给定图G=（V，E）如果顶点集V可以划分为两个互不相交的非空子集<em>X</em>和<em>Y</em>，并且途中每条边（i，j）两个端点分别属于点集<em>X</em>，和<em>Y</em>，那么就称G为一个二分图（Bipartite graph），记为G=（X，E，Y）。如果在两个子集中分别取点i，j均有一条边，那么就称图G为完全二分图（Complete bipartite graph）。</p>
+<p>在网络科学中，二分网也称为<strong>二分网络（Bipartite network）</strong>、<strong>从属网</strong>（Affiliation network）或<strong>二模网络</strong>（Two-model network）。</p>
+<h3 id="2-7-2-二分网的实际例子"><a href="#2-7-2-二分网的实际例子" class="headerlink" title="2.7.2 二分网的实际例子"></a>2.7.2 二分网的实际例子</h3><p>（1）人员合作网络<br>（2）学生选课网络<br>（3）用户推荐网络<br>（4）在线社区网络</p>
+<h3 id="2-7-3-二分网到单分图的投影"><a href="#2-7-3-二分网到单分图的投影" class="headerlink" title="2.7.3 二分网到单分图的投影"></a>2.7.3 二分网到单分图的投影</h3><p>二分网的投影的主要方式即为</p>
+<p><center>$\overline{S}=AA^T$  或 $\overline{S}=A^TA$ </center><br>这样可以得到二分网中到两个不同顶点集的投影。<br>现实中例子过多，不再按照书中例子一一列举，关于二分网的投影问题，书中提出了两个较为有价值的问题：</p>
+<blockquote>
+<p>(1) 二分网得到的两个子集上的投影（两个单分网络）各自都会丢失原始二分网的一些信息（投影操作必是降维的），从二分网投影得到的单分网络中有很多派系（Clique），即完全子图，这些派系的出现是网络具有高聚类特性的一个重要原因。<br>(2)在计算时可以进行带权运算。能使得到的单分网带有更多的信息</p>
+</blockquote>
+<h3 id="2-7-4-二分图的匹配问题"><a href="#2-7-4-二分图的匹配问题" class="headerlink" title="2.7.4 二分图的匹配问题"></a>2.7.4 二分图的匹配问题</h3><p>（1）匹配（Matching）：设G=（X，E，Y）为二分图，F为边集E的一个子集，即F$\subseteq$E，如果F中任意两条边都没有公共端点，那么称F为G的一个匹配。<br>（2）最大匹配（Maximal Matching）：图G的所有匹配中边数最多的匹配<br>（3）X-完全匹配（X-Perfect matching）：集合X中任一顶点均为匹配F中边的端点。<br>（4）Y-完全匹配（Y-Perfect matching）：集合Y中任一顶点均为匹配F中边的端点。<br>（5）完全匹配（Perfect matching）：F即是X-完全匹配又是Y-完全匹配</p>
+<h2 id="2-8-稳定匹配"><a href="#2-8-稳定匹配" class="headerlink" title="2.8 稳定匹配"></a>2.8 稳定匹配</h2><p>寻找二分图的完全稳定匹配算法由两个数理经济学家Gale和Shapley于20世纪60年代提出，因此称为G-S算法</p>
+<blockquote>
+<p><strong>师生匹配问题</strong>  假设硕士研究生入学后会有双选会，每名导师最多带三名学生，每名学生最多有三名导师。在这里我们不妨假设学生数量和导师一样多且每名教师恰好带一名学生。一种师生分配方案就对应一张完全二分图的完全匹配。这种完全匹配共有<strong>N!</strong>种。一种师生分配方案是稳定的，如果该方案能够保证：</p>
+<blockquote>
+<p>(1)如果有学生想要换导师，那么没有其他教师愿意接受这名学生<br>(2)如果有教师想要换学生，也没有其他学生想要跟随这名导师<br> 假设每名学生都有针对教师的一个优先表，每名教师也有对学生的一个优先表，两个优先表中均不允许出现并列排名</p>
+</blockquote>
+<p>一种分配方案是<strong>稳定的</strong>，如果对每一个教师<em>P</em>和每一个没有跟随教师<em>P</em>的学生<em>S</em>，至少出现下列两种情形之一：</p>
+<blockquote>
+<p>(1)教师<strong>P</strong>对他已经接受的每位学生都比S更满意<br>(2)学生S对他目前的导师比P满意</p>
+</blockquote>
+<p> 由这个形式化的定义，我们可以立即知道什么是不稳定的匹配：<br> 一种分配方式是<strong>不稳定的（unstable）</strong>，如果至少存在一个教师P和一个没有跟随教师P的学生S，使得以下两点均满足：</p>
+<blockquote>
+<p>（1）教师P对学生S至少比他接受的一位学生满意<br>（2）学生S对教师P比对他目前的导师更满意</p>
+</blockquote>
+<p>我们称教师P和学生S是这种匹配方案的一对不稳定因素</p>
+</blockquote>
+<h3 id="2-8-2-稳定匹配的求解"><a href="#2-8-2-稳定匹配的求解" class="headerlink" title="2.8.2 稳定匹配的求解"></a>2.8.2 稳定匹配的求解</h3><p>求解稳定匹配的算法描述如下：<br>每次选择一名学生，让其按照自己优先表的顺序从高到低寻找导师，这时由于导师还没有选择学生，那他最保险的方式是收下这名学生，即使这名学生不是在优先表中排名靠前的学生，如果导师已经有了学生S，这时学生S’来问询导师，此时导师将选择S’而放弃S，如此，如果学生被导师拒绝了，那么该名学生应当按照优先表去轮询其未询问过的老师。</p>
+<p>关于该算法的描述由如下几个问题：<br>（1）尽管有N个学生，但是算法未必在N次询问后就终止<br>（2）该算法是否会停止<br>（3）停止后得到的匹配是否是完全且稳定的匹配</p>
+<p>在该问题前有几个事实：<br>（1）教师P从第一次有学生去和他面谈开始，就会一直有候选学生，而且会越来越好（按照教师P的优先表）<br>（2）学生S可能会在候选学生和自由学生状态之间切换，且面谈的教师只会越来越差<br>（3）算法唯一的终止条件是所有学生均为候选学生，找不到自由的学生</p>
+<p>结论及证明</p>
+<blockquote>
+<p>每次迭代过程中，某个学生去找一个以前没有面谈过的教师面谈，且该学生以后不会再找该教师面谈。令f(t)表示到第t次迭代结束的时候，学生S已经与教师P面谈过的所有（S,P）对的数目，对于任意t，显然有f(t+1)$\geq$f(t)+1。但是，在N个学生和N个教师之间面谈至多只存在N<sup>2</sup>对。注意到算法终止的唯一条件是找不到自由的学生，也意味着找不到自由的教师，故这是一个稳定的匹配。</p>
+<p>假设集合$\Omega$存在一对不稳定因素，也就是说，在集合$\Omega$中存在师生对（S<sub>1</sub>,P<sub>1</sub>）和（S<sub>2</sub>,P<sub>2</sub>），且满足$S_1$更想跟着导师$P_2$而不是导师$P_1$;导师$P_2$更想要学生$S_1$而不是学生$S_2$.</p>
+<p>根据算法的定义，$S_1$最后一次面谈应该是与$P_1$进行的。在某个更早的迭代步，学生$S_1$与导师$P_2$面谈过吗？如果没有，那么$P_1$在有限表中的排名应当高于$S_2$；如果有，那么他拒绝$S_1$的原因是有比$S_1$更好的选择$S_2$或$S_3$如果是$S_2$那么与结果相符，如果是$S_3$那么说明$S_2$优先级更高。</p>
+</blockquote>
+<h3 id="2-8-3-稳定匹配的公平性"><a href="#2-8-3-稳定匹配的公平性" class="headerlink" title="2.8.3 稳定匹配的公平性"></a>2.8.3 稳定匹配的公平性</h3><p>G-S算法最终的结论均是对学生最有利，而对教师最不利的</p>
+<h3 id="2-8-4-完全匹配存在的条件"><a href="#2-8-4-完全匹配存在的条件" class="headerlink" title="2.8.4 完全匹配存在的条件"></a>2.8.4 完全匹配存在的条件</h3><p>如果某些学生只希望选择某些导师，而某些导师只希望选择某些学生，那么就可能存在不完全匹配。</p>
+<p>一般的，对于二分网右端的一组节点S，如果左端某个节点有边与右端的某个节点连接，我们就称该节点为S的邻居节点。S所有的邻居节点的集合称为N(S)。如果S中的节点数目严格大于N(S)中的节点数目，则右端的节点集合S是<strong>抑制的</strong>。</p>
+<p>显然，只要一个二分图中存在抑制集，那么就不存在完全匹配，但不存在其他的不存在完全匹配的理由。</p>
+<blockquote>
+<p><strong>定理 2-7 （匹配定理）</strong>一个左右节点数相同的二分图存在完全匹配的充要条件是它不包含抑制集</p>
+</blockquote>
+<h1 id="3-补充说明"><a href="#3-补充说明" class="headerlink" title="3 补充说明"></a>3 补充说明</h1><p>该章节还具体介绍了大名鼎鼎的Dijstra算法，用于最小生成树的Prim算法和Kruskal算法，其实现较为简单，在此不做过多赘述。</p>
 
       
     </div>
@@ -539,7 +609,7 @@ $b_{ij}=\sum_{k=1}^N{a_{ik}}{a_{jk}}$
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络科学导论（二）"><span class="nav-number">1.</span> <span class="nav-text">网络科学导论（二）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-图论起源"><span class="nav-number">1.1.</span> <span class="nav-text">2.1 图论起源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-网络的图表示"><span class="nav-number">1.2.</span> <span class="nav-text">2.2 网络的图表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-图的定义"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.2.1 图的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-图的类型"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2.2 图的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-简单图"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.2.3 简单图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-图的计算机表示"><span class="nav-number">1.3.</span> <span class="nav-text">2.3 图的计算机表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-文献共引和文献耦合"><span class="nav-number">1.4.</span> <span class="nav-text">2.4 文献共引和文献耦合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-共引网络"><span class="nav-number">1.4.1.</span> <span class="nav-text">2.4.1 共引网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-路径与连通性"><span class="nav-number">1.5.</span> <span class="nav-text">2.5 路径与连通性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-路径"><span class="nav-number">1.5.1.</span> <span class="nav-text">2.5.1 路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-连通性"><span class="nav-number">1.5.2.</span> <span class="nav-text">2.5.2 连通性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-3-路径与连通性的邻接矩阵表示"><span class="nav-number">1.5.3.</span> <span class="nav-text">2.5.3 路径与连通性的邻接矩阵表示</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络科学导论（二）"><span class="nav-text">网络科学导论（二）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-图论起源"><span class="nav-text">2.1 图论起源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-网络的图表示"><span class="nav-text">2.2 网络的图表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-图的定义"><span class="nav-text">2.2.1 图的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-图的类型"><span class="nav-text">2.2.2 图的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-简单图"><span class="nav-text">2.2.3 简单图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-图的计算机表示"><span class="nav-text">2.3 图的计算机表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-文献共引和文献耦合"><span class="nav-text">2.4 文献共引和文献耦合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-共引网络"><span class="nav-text">2.4.1 共引网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-路径与连通性"><span class="nav-text">2.5 路径与连通性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-路径"><span class="nav-text">2.5.1 路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-连通性"><span class="nav-text">2.5.2 连通性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-3-路径与连通性的邻接矩阵表示"><span class="nav-text">2.5.3 路径与连通性的邻接矩阵表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-4-割集和Menger定理"><span class="nav-text">2.5.4 割集和Menger定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-5-有向图的连通性"><span class="nav-text">2.5.5 有向图的连通性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-生成树和最小生成树"><span class="nav-text">2.6 生成树和最小生成树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-二分网与匹配问题"><span class="nav-text">2.7 二分网与匹配问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-1-二分网的定义"><span class="nav-text">2.7.1 二分网的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-2-二分网的实际例子"><span class="nav-text">2.7.2 二分网的实际例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-3-二分网到单分图的投影"><span class="nav-text">2.7.3 二分网到单分图的投影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-4-二分图的匹配问题"><span class="nav-text">2.7.4 二分图的匹配问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-稳定匹配"><span class="nav-text">2.8 稳定匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-2-稳定匹配的求解"><span class="nav-text">2.8.2 稳定匹配的求解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-3-稳定匹配的公平性"><span class="nav-text">2.8.3 稳定匹配的公平性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-4-完全匹配存在的条件"><span class="nav-text">2.8.4 完全匹配存在的条件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-补充说明"><span class="nav-text">3 补充说明</span></a></li></ol></div>
             
 
           </div>
