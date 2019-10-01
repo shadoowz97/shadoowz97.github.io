@@ -87,10 +87,13 @@
 <meta property="og:site_name" content="Shadoowz">
 <meta property="og:description" content="3.1 引言复杂网络的具体问题在本章才开始进行介绍，包括网络的拓扑性质分析，网络的拓扑建模、网络的行为动力学分析与控制。书中指出，虽然网络科学看起来在基础部分和图论近乎完全一致，但是由于目前复杂网络的规模不是之前理论分析所能达到的，两者在研究方法和研究角度上都有着巨大的不同。较小规模的图可以通过图示的方法。出网络的性质，但对于大规模的网络的研究必须借助强大的计算能力和统计方法。现代网络科学更为关注">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-29T04:06:22.777Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/网络科学导论（三）/03_1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/网络科学导论（三）/03_2.png">
+<meta property="og:updated_time" content="2019-10-01T11:13:29.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络科学导论（三）">
 <meta name="twitter:description" content="3.1 引言复杂网络的具体问题在本章才开始进行介绍，包括网络的拓扑性质分析，网络的拓扑建模、网络的行为动力学分析与控制。书中指出，虽然网络科学看起来在基础部分和图论近乎完全一致，但是由于目前复杂网络的规模不是之前理论分析所能达到的，两者在研究方法和研究角度上都有着巨大的不同。较小规模的图可以通过图示的方法。出网络的性质，但对于大规模的网络的研究必须借助强大的计算能力和统计方法。现代网络科学更为关注">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/26/网络科学导论（三）/03_1.jpg">
 
 
 
@@ -397,7 +400,7 @@
 <center>$D=max_{ij}d_{ij}$</center>
 
 </blockquote>
-<p>进一步讲，我们可能更为关心的是网络中绝大部分用户对之间的距离。为此，可以统计出距离为d的连通的节点对的数量占总数量的比例，记为f(d)；并进而统计网络中距离不超过d的连通的节点对的数量占整个网络中连通的节点对数量的比例记为g(d)</p>
+<p>进一步讲，我们可能更为关心的是网络中绝大部分用户对之间的距离。为此，可以统计出距离为d的连通的节点对的数量占总数量的比例，记为f(d)；并进而统计网络中距离不超过d的连通的节点对的数量占整个网络中连通的节点对数量的比例记为g(d)<img src="/2019/09/26/网络科学导论（三）/03_1.jpg"></p>
 <p>一般的如果整数D满足</p>
 <blockquote>
 <center>$g(D-1)<0.9,g(d)\geq0.9$< center>
@@ -480,10 +483,60 @@
 该式可进一步写为
 <center id="_3_38">$\tilde{C}_i^{(2)}=C_i\bar{I}_i$ (3-38)</center>
 其中C<sub>i</sub>是把该网络看作无权网络节点时节点i的聚类系数，$\bar{I}_i$时包含节点i的三角形的归一化平均密度：
-<center id="_3_39">$\bar{I}_i=\frac1{2E_i}\sum_{j,k()}(\hat{w}_{ij}\hat{w}_{ik}\hat{w}_{jk})^{1/3}$</center>
+<center id="_3_39">$\bar{I}_i=\frac1{2E_i}\sum_{j,k}(\hat{w}_{ij}\hat{w}_{ik}\hat{w}_{jk})^{1/3}$</center>
 这里E<sub>i</sub>是包含节点i的三角形的数目，即
 <center id="_3_40">$E_i=\frac12\sum_{j,k}a_{ij}a_{jk}a_{ki}$</center>
+
 </blockquote>
+<hr>
+<blockquote>
+<p>由无权网络中节点的聚类系数的定义（3-23）可以看出，在无权网络中，节点的聚类系数等于包含节点i的三角形数目E<sub>i</sub>除以以节点i及其邻节点为顶点的三角形的数目的可能的上界。基于这一定义的推广可以得到加权网络节点聚类系数的第三种定义如下：</p>
+<p><center id="_3_41">$\tilde{C}_{i}^{(3)}=\frac{\frac{1}{2}\sum_{j,k}{\hat{w}_{ij}\hat{w}_{ik}\hat{w}_{kj}}}{\frac{1}{2}(({\sum_k{\hat{w}_{ik}}})^2-\sum_{k}{\hat{w}^2_{ik}})}=\frac{\sum_{i,j}\hat{w}_{ij}\hat{w}_{ik}\hat{w}_{jk}}{(\sum_k{\hat{w}_{ik}})^2-\sum_k\hat{w}^2_{ik}}$      （3-41）</center><br>上式的分子即为包含节点i的三角形数目$E_i$的加权形式，而对应的分母则为分子的可能的上界，从而保证$\tilde{C}_i^{(3)}\in[0,1]$，式3-41也可以写为</p>
+<p><center id="_3_42">$\tilde{C}_i^{(3)}=\frac{\sum_{j,k}{\hat{w}_{ij}\hat{w}_{ik}\hat{w}_{jk}}}{\sum_{j\neq{k}}\hat{w}_{ij}\hat{w}_{ik}}        $      (3-42)</center><br>与无权网络的聚类系数定义相比，上述关于加权网络聚类系数的三种定义具有如下特性：<br>(1)当加权网络 退化为无权网络时，上述几种定义都是等价的。<br>(2)与无权网络中节点i的聚类系数$C_i$相同，它们的值域都为[0,1]<br>(3)与$C_i$相同，$\tilde{C}_{i}^{(l)}=0(l=1,2,3)$当且仅当不存在包含节点i的三角形。<br>(4)yu$C_i$相同，$\tilde{C}_i^{1}=1$的充要条件时节点i的任意两个邻节点都互为邻居，即节点i与它的任意两个邻节点都构成一个三角形。但是这一条件只是$\tilde{C}_{i}^{(2)}=\tilde{C}_i{(3)}=1$的必要条件，因为$\tilde{C}_i^{(2)}=1$还要求包含i的所有三角形的边的值权值都相同；$\tilde{C}_i^{(3)}=1$则要求三角形的外边的权值都相同且都为最大值，而与与节点i相连的边的权值无关。</p>
+</blockquote>
+<p>关于有向网络 ，通常的方法仍是先将其看作无向网络。近些年来也有一些考虑到有向边的聚类系数的定义并用于有向网络的分类，其中的一个基本的难点是：无向网络的一个三角形对应于一个有向网络有7种可能性。</p>
+<h1 id="3-6-度分布"><a href="#3-6-度分布" class="headerlink" title="3.6 度分布"></a>3.6 度分布</h1><h2 id="3-6-1-度分布概念"><a href="#3-6-1-度分布概念" class="headerlink" title="3.6.1 度分布概念"></a>3.6.1 度分布概念</h2><p>该章节主要介绍了网络中度分布的概念，度是指网络中从节点出发的边或到达节点的边的数目，分析网络中节点度的分布规律可以进一步得到网络中的一些性质，网络中节点的度分布定义为</p>
+<blockquote>
+<p><center>$P(k)$       $P(k^{out})$       $P(k^{in})$</center></p>
+<h2 id="3-6-2-从钟形曲线到长尾分布"><a href="#3-6-2-从钟形曲线到长尾分布" class="headerlink" title="3.6.2 从钟形曲线到长尾分布"></a>3.6.2 从钟形曲线到长尾分布</h2><p>最常见，最重要的概率分布是正态分布，也称为高斯分布，记为$\xi{-}N(\mu,\sigma^2)$，其中$\mu$是均值，$\sigma$是标准差，均值决定了分布的中心，标准差决定了分布的形状。正态分布的均匀性体现在绝大部分的数据都落在均值附近，大约有68%、96%、99.7%的数据落在据平均值1个、2个、3个标准差的范围内。</p>
+</blockquote>
+<p>正态分布是针对连续型随机变量而言的，但多数数据均为离散型的，取值为非负整数。常见的概率分布有超几何分布，二项分布和泊松分布，它们都可以看做是正态分布的离散形式，并且概率分布图都近似具有钟形形状。其中最重要的泊松分布满足</p>
+<blockquote>
+<p><center id="_3_43">$P(k)=\frac{\lambda^ke^{-\lambda}}{k!}$   (3-43)</center><br>其中参数$\lambda{&gt;}0$。泊松分布的均值和方差都是$\lambda$，且随着$\lambda$的增大，分布的形状迅速接近正态曲线<img src="/2019/09/26/网络科学导论（三）/03_2.png">。<br>服从钟形分布的随机分布变量都具有一个明显的特征标度———钟形曲线的峰值（即随机变量的均值）。</p>
+</blockquote>
+<p>现实世界中存在着另外一种常见的分布———-长尾分布，但与钟形分布不同的是，长尾分布并不具有特征标度，<strong>所谓特征标度是指大部分的值应该落在以特征标度为中心的一个相对较小的区间内</strong>。</p>
+<p>  如果一个实际网络的度分布曲线近似具有钟形形状，其形状在远离峰值&lt;k&gt;处呈指数下降。这意味着我们可以肯定地认为网络中所有节点地度都与平均度&lt;k&gt;相差不大。此类网络被称为<strong>均匀网络（Homogeneous network）</strong>。但是大多数网络的节点地度分布呈现长尾特征。</p>
+<p>幂律分布的分布函数具有长尾特征。在一定的数学意义下，幂律分布是唯一一种具有无标度特性的长尾分布。</p>
+<h1 id="3-7幂律分布"><a href="#3-7幂律分布" class="headerlink" title="3.7幂律分布"></a>3.7幂律分布</h1><h2 id="3-7-1-幂律分布及其检验"><a href="#3-7-1-幂律分布及其检验" class="headerlink" title="3.7.1 幂律分布及其检验"></a>3.7.1 幂律分布及其检验</h2><p>一篇在nature上的通讯指出，在万维网中，节点度的分布并不服从泊松分布，而是能更好的用幂律分布来表示</p>
+<blockquote>
+<p><center>P(k)$\sim{k}^{-\gamma}$</center><br>其中$\gamma$大于等于0且通常在2到3之间                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
+</blockquote>
+<p>通过对万维网的采样数据发现，入度为k的网页的数量和k<sup>-2</sup>(实际比-2还要小一点)呈正比，这意味着随着度的增加，网页数量下降的速度比泊松分布要慢的多</p>
+<h2 id="3-7-2-幂律分布的性质"><a href="#3-7-2-幂律分布的性质" class="headerlink" title="3.7.2 幂律分布的性质"></a>3.7.2 幂律分布的性质</h2><h3 id="1-无标度特性"><a href="#1-无标度特性" class="headerlink" title="1.无标度特性"></a>1.无标度特性</h3><blockquote>
+<p>定理3-1 考虑一个概率分布函数f(x)，假设f(1)f’(1)$\neq$0。如果给定常数a,存在常数b使得函数f(x)满足如下无标度条件：</p>
+<center>f(ax)=bf(x)</center>
+那么必有$f(x)=f(1)x^{-\gamma},\gamma=-f'(1)/f(1)$
+也就是说，幂律分布函数是唯一满足无标度条件的概率分布函数（如果仅由结论猜测推导过程并不困难，在此略过证明过程）
+### 2.归一化
+幂函数$p_k=Ck^{-\gamma}$要成为概率分布必须要进行归一化操作，此外度k不能为0，所以我们假设度的概率分布函数在k&gt;k<sub>min<sub>&gt;时才成立于是有
+<center>$\sum_{k=k_{min}}^{\infty}Ck^{-\gamma}=1$</center>
+从而得到
+<center>$C=\frac1{\zeta(\gamma,k_{min})}$</center>
+其中
+<center>$\zeta(\gamma,k_{min})\equiv{\sum_{k=k_{min}}^\infty{k}^{-\gamma}}$</center>
+称为广义$\zeta$函数，$\zeta{(\gamma,1)}\cong\zeta(\gamma)$称为标准黎曼函数。通过把求和利用积分近似可以得到幂律的度分布为
+<center>$p_k\sim{\frac{\gamma-1}{k_{min}}{(\frac{k}{k_{min}}})^{-\gamma}}$</center>
+相应的，累计度分布也可以写为
+<center>$P_k\sim(\frac{k}{k_{min}}^{-(\gamma-1)})$</center>
+
+</sub></sub></blockquote>
+<h3 id="3-矩的性质"><a href="#3-矩的性质" class="headerlink" title="3.矩的性质"></a>3.矩的性质</h3><p>度分布的m(m$\ge$1)阶矩为</p>
+<blockquote>
+<p><center>$&lt;k^m&gt;=\sum_{k=0}^{\infty}k^mp_k$</center><br>其中当m=1时，一阶矩即为网络的平均度。如果网络的度分布在k$\ge$时度分布具有幂律形式那么可以得到</p>
+<p><center>$&lt;k^m&gt;=\sum_{k=0}^{k_{min}-1                                                                                                                                                                                                                                                                                                                                                                                   }k^mp_k+C\sum_{k=k_{min}}^{\infty}k^{m-\gamma}$</center><br>近似积分得</p>
+<p><center>$&lt;k^m&gt;\simeq{\sum^{k_{min}-1}_{k=0}}k^mp_k+\frac{C}{m-\gamma+1}[k^{m-\gamma+1}]^\infty_{k_{min}}$</center><br>上式中最后一个和式的第一项总是有限值，取决于度k较小时的非幂律分布。如果$m-\gamma+1&lt;0$那么第二项总是有限值，这意味着存在有限矩&lt;k<sup>m</sup>&gt;；如果相反那么矩也发散，因此幂律分布存在m阶矩的充要条件为m-$\gamma+1$&lt;0</p>
+</blockquote>
+<p>实际网络中的规模总是有限的，任一节点的度也都是有限的，仅当网络的规模趋近于无限大时才有可能发散。</p>
 
       
     </div>
@@ -649,7 +702,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-1-引言"><span class="nav-text">3.1 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2-复杂网络的连通性"><span class="nav-text">3.2 复杂网络的连通性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-1-无向网络中的连通巨片"><span class="nav-text">3.2.1 无向网络中的连通巨片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-2-有向网络中的蝴蝶结结构"><span class="nav-text">3.2.2 有向网络中的蝴蝶结结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-节点的度与网络稀疏性"><span class="nav-text">3.3 节点的度与网络稀疏性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-1-度与平均度"><span class="nav-text">3.3.1 度与平均度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-3-网络稀疏性与稠密化"><span class="nav-text">3.3.3 网络稀疏性与稠密化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-4-平均路径长度和直径"><span class="nav-text">3.4 平均路径长度和直径</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-1-无权无向网络的情形"><span class="nav-text">3.4.1 无权无向网络的情形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-平均路径长度"><span class="nav-text">1.平均路径长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-网络直径"><span class="nav-text">2.网络直径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-2-加权有向网络情形"><span class="nav-text">3.4.2 加权有向网络情形</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-5-聚类系数"><span class="nav-text">3.5 聚类系数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-1无权无向网络的情形"><span class="nav-text">3.5.1无权无向网络的情形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-2-加权网络"><span class="nav-text">3.5.2 加权网络</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-1-引言"><span class="nav-text">3.1 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2-复杂网络的连通性"><span class="nav-text">3.2 复杂网络的连通性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-1-无向网络中的连通巨片"><span class="nav-text">3.2.1 无向网络中的连通巨片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-2-有向网络中的蝴蝶结结构"><span class="nav-text">3.2.2 有向网络中的蝴蝶结结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-节点的度与网络稀疏性"><span class="nav-text">3.3 节点的度与网络稀疏性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-1-度与平均度"><span class="nav-text">3.3.1 度与平均度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-3-网络稀疏性与稠密化"><span class="nav-text">3.3.3 网络稀疏性与稠密化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-4-平均路径长度和直径"><span class="nav-text">3.4 平均路径长度和直径</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-1-无权无向网络的情形"><span class="nav-text">3.4.1 无权无向网络的情形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-平均路径长度"><span class="nav-text">1.平均路径长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-网络直径"><span class="nav-text">2.网络直径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-2-加权有向网络情形"><span class="nav-text">3.4.2 加权有向网络情形</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-5-聚类系数"><span class="nav-text">3.5 聚类系数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-1无权无向网络的情形"><span class="nav-text">3.5.1无权无向网络的情形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-2-加权网络"><span class="nav-text">3.5.2 加权网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-6-度分布"><span class="nav-text">3.6 度分布</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-1-度分布概念"><span class="nav-text">3.6.1 度分布概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-2-从钟形曲线到长尾分布"><span class="nav-text">3.6.2 从钟形曲线到长尾分布</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-7幂律分布"><span class="nav-text">3.7幂律分布</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-1-幂律分布及其检验"><span class="nav-text">3.7.1 幂律分布及其检验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-2-幂律分布的性质"><span class="nav-text">3.7.2 幂律分布的性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-无标度特性"><span class="nav-text">1.无标度特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-矩的性质"><span class="nav-text">3.矩的性质</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
