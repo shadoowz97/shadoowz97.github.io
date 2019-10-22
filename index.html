@@ -332,180 +332,19 @@
 
       
         
-          
-            <h1 id="4-度相关性与社团结构"><a href="#4-度相关性与社团结构" class="headerlink" title="4 度相关性与社团结构"></a>4 度相关性与社团结构</h1><h2 id="4-1-引言"><a href="#4-1-引言" class="headerlink" title="4.1 引言"></a>4.1 引言</h2><p>度分布并不能唯一的刻画一个网络，因为具有相同度分布的两个网络可能具有风场不同的其他性质或行为。为了进一步刻画网络的拓扑结构我们需要考虑更多结构信息的高阶拓扑性质。本章介绍刻画网络的二阶度分布特性（也称度相关性）几种不同的方法。</p>
+          <h1 id="4-度相关性与社团结构"><a href="#4-度相关性与社团结构" class="headerlink" title="4 度相关性与社团结构"></a>4 度相关性与社团结构</h1><h2 id="4-1-引言"><a href="#4-1-引言" class="headerlink" title="4.1 引言"></a>4.1 引言</h2><p>度分布并不能唯一的刻画一个网络，因为具有相同度分布的两个网络可能具有风场不同的其他性质或行为。为了进一步刻画网络的拓扑结构我们需要考虑更多结构信息的高阶拓扑性质。本章介绍刻画网络的二阶度分布特性（也称度相关性）几种不同的方法。</p>
 <p>即使是联合概率分布也仍然不能完全刻画网络拓扑。一个典型例子就是复杂网络的社团结构：实际网络往往可以看作是由几个社团组成，社团内部的联系较为紧密，而社团间的联系却比较松散。</p>
-<h2 id="4-2-度相关性和同配性"><a href="#4-2-度相关性和同配性" class="headerlink" title="4.2 度相关性和同配性"></a>4.2 度相关性和同配性</h2><h3 id="4-2-1-高阶度分布的引入"><a href="#4-2-1-高阶度分布的引入" class="headerlink" title="4.2.1 高阶度分布的引入"></a>4.2.1 高阶度分布的引入</h3><p>平均度&lt;k&gt;=2M/N可以看作是网络的0阶度分布特性，他除了告诉我们有多少条边之外并没有告诉我们这些边在网络中的任何信息。</p>
-<p>网络的度分布P(k)=n(k)/N可以看作是网络的1阶度分布特征&lt;k&gt;=$\sum_{k=0}^\infty{k}P(k)$，具有相同度分布的两个网络有可能具有非常不同的其他性质或是行为。</p>
-<h3 id="4-2-2-联合概率分布"><a href="#4-2-2-联合概率分布" class="headerlink" title="4.2.2 联合概率分布"></a>4.2.2 联合概率分布</h3><p>联合概率P(j,k)定义为网络中随机选取的一条边的两个端点的度为j和i的概率，即为网络中度为j和度为i的节点之间存在边占网络中总边数的比例：</p>
-<blockquote>
-<p><center id="_4_2">$P(i,j)=\frac{m(j,k)\mu{(j,k)}}{2M}$</center><br>其中，m(i,j)是度为i和度为j的节点之间的边数；如果i=j那么$\mu(i,j)=2$否则为1</p>
-</blockquote>
-<p>联合概率分布具有如下特征</p>
-<blockquote>
-<ol>
-<li>记<center>$p_k\triangleq{P(k)} \qquad q_k\triangleq{P_n(k)}\qquad e_ {jk}\triangleq{P(j,k)}$</center>
-下式表明网络的2阶度分布特性包含了1阶度分布特性：
-<center>$p_k=\frac{&lt;k&gt;}{k}\sum_{j=k_{min}}^{k_{min}}e_{jk}=\frac{&lt;k&gt;}{k}q_k$</center>
-
-</li>
-</ol>
-</blockquote>
-<p>如果网络中两个节点之间是否有边相连与这两个节点的度值无关，也就是说，网络中随机选择的一条边的两个端点的度是完全随机，即有</p>
-<blockquote>
-<center id="_4_8">$e_{jk}=q_jq_k$</center>
-
-</blockquote>
-<p>那么就称<strong>网络不具有度相关性</strong>，或着称网络是中性的；否则，就称<strong>网络具有度相关性</strong></p>
-<p>对于度相关的网络，如果总体上度大的节点倾向于连接度大的节点，那我们就说网络的度是正相关的，这个网络是同配的（Assortative）;如果度大的节点倾向于连接度小的节点，那么我们就称网络的度是负相关的，这个网络是异配的（Disassortative）。具有相同度分布的网络有可能具有完全不同的度相关性。</p>
-<h3 id="4-2-3-余平均度"><a href="#4-2-3-余平均度" class="headerlink" title="4.2.3 余平均度"></a>4.2.3 余平均度</h3><p>条件概率$P_c(j|k)$定义为在网络中随机选取的一个度为k的节点的邻居节点度为j的概率，它与联合概率P(j,k)有如下的关系：</p>
-<blockquote>
-<center id="_4_9">$P_c(j|k)*P_n(k)=P(j,k)$（4-9）</center>
-
-</blockquote>
-<p>因此，在给定度分布的情形，条件概率与联合概率可通过式<a href="#_4_9">(4-9)</a>得到，如果条件概率$P_c(j|k)$和k相关，就说明节点度之间具有相关性，并且网络拓扑可能具有层次性，如果条件概率$P_c(j,k)$和k没有相关性，那么就说明网络度节点间没有相关性。考虑到任一条边与某个节点相连的概率与该节点的度呈正比，度不相关的网络的条件概率为</p>
-<blockquote>
-<center>$P_n(k'|k)=P_n(k')=\frac{k'P(k')}{&lt;k&gt;}$</center>
-
-</blockquote>
-<p>另一种更为简洁的判断度相关性的方法是计算度为k的节点的邻居节点的平均度，也称为度为k的节点的<strong>余平均度(Excess average degree)</strong>，记为&lt;$k_{nn}&gt;(k)$。</p>
-<p>设节点i的$k_i$个邻居节点的度为$k_{i_j}$，j=1，2，3…k<sub>j</sub>我们可以计算节点i的余平均度，即节点i的$k_i$个邻居节点的平均度 如下：</p>
-<blockquote>
-<center>$&lt;k_{nn}&gt;_i=\frac1{k_i}\sum_{j=1}^{k_{i_j}}k_{i_j}$</center>
-
-</blockquote>
-<p>假设网络中度为k的节点为v<sub>1</sub>,v<sub>2</sub>,v<sub>3</sub>…,那么度为k的节点的余平均度计算如下：</p>
-<blockquote>
-<center>$&lt;k_{nn}&gt(k)=\frac1{i_k}\sum^{i_k}_{i=1}&lt;k_{nn}&gt;_{v_i}$</center> 
-
-</blockquote>
-<p>$&lt;k_{nn}&gt;(k)$与条件概率和联合概率之间具有如下关系</p>
-<blockquote>
-<center id="_4_13">$&lt;k_{nn}&gt;(k)=\sum^{k_{max}}_{k'=k_{min}}k'P_c(k'|k)=\frac1{q_k}\sum_{k'=k_{min}}^{k_{max}}k'e_{kk'}$             (4-13)</center>
-
-</blockquote>
-<p>如果$&lt;k_{nn}&gt;(k)$是k的增函数，那么意味着平均而言度大的节点倾向于连接度大的节点，从而表明是同配的；反之则是异配的；如果两者无关，则表明网络中不具有度相关性：</p>
-<blockquote>
-<center id="_4_14">$&lt;k_{nn}&gt;(k)=\frac{\sum_jje_{jk}}{\sum_{j}e_{jk}}=\frac{\sum_jjq_jq_k}{q_k}=\sum_jjq_j=\sum_jj\frac{jp_j}{&lt;k&gt;}=\frac{&lt;k^2&gt;}{&lt;k&gt;}$ (4-14)</center>
-
-</blockquote>
-<p>与联合概率分布矩阵$(e_{jk})_{k_{max}*k_{max}}$相比，余平均度更为直观但不易于比较不同规模的网络。<br><img src="/2019/10/01/网络科学导论（四）/04_1.jpg"></p>
-<p>上图为例，FaceBook的用户节点的余平均度随着k的增加而增加，可知facebook的用户网络是同配的。作为对比，4-5中的水平虚线是指在假设假设网络不具有度相关性时的期望余平均度&lt;k<sup>2</sup>&gt;/&lt;k&gt;=635。另外一个值得关注的点时途中实线和虚线的交点在k=700附近，意味着大体上来讲除非你的朋友数大于700，否则你的朋友比你拥有更多的朋友的概率很大，而在facebook中92%的用户的朋友数都远低于这个值</p>
-<p>上图的第二幅图表明时k=10，50，100，500时的facebook网络的条件概率$P_c(j|k)$其中纵坐标是线性坐标，横坐标是对数坐标。随着k的增加，曲线的峰值也逐渐向右靠拢，表明度大的节点个更为倾向于连接度大的节点，从而表明网络是同配的，此外除了k=500的情形，其余的图像的都显示条件概率分布的均值都明显大于假设网络不具有度相关性时的期望条件概率分布的均值$k’P(k’)/&lt;k&gt;$ </p>
-<h3 id="4-2-4-同配系数"><a href="#4-2-4-同配系数" class="headerlink" title="4.2.4 同配系数"></a>4.2.4 同配系数</h3><p>网络是度县官的就意味着$e_{jk}$与$q_jq_k$之间不恒等。可以考虑采用两者之间的差的大小来刻画网络的同配或者异配程度，即如下定义度的相关函数</p>
-<blockquote>
-<center id="_4_15">$&lt;jk&gt;-&lt;j&gt;&lt;k&gt;=\sum_{j,k}jk(e_{jk}-q_jq_k)$（4-15）</center>
-
-</blockquote>
-<p>一般而言，规模大的网络根据式<a href="#_4_15">4-15</a>计算得到的值的绝对值也大，但可以通过归一化解决这个问题，从而比较不同网络环境中同配或异配程度。当网络为完全同配时，$e_{jk}=q_k\delta_{jk}$式<a href="#_4_15">4-15</a>达到最大值，即为余度分布$q_k$的方差</p>
-<blockquote>
-<p><center id="_4_16">$\sigma_q^2=\sum{k^2}q_k^2-[\sum_kkq_k]^2$(4-16)</center><br>于是得到归一化的相关系数，也称为<strong>同配系数</strong></p>
-<p><center id="_4_17">$\frac1{\sigma_q^2}\sum_{j,k}jk(e_{jk}-q_jq_k)$(4-17)</center><br>显然$r\in[-1,1]$。如果r&gt;,那么网络是同配的；如果r&lt;0那么网络是异配的。|r|的大小反映了同配或者异配系数的强弱程度，同配和异配对网络的鲁棒性和传播性有显著的影响。</p>
-</blockquote>
-<h3 id="4-2-5-实际网络的同配性质"><a href="#4-2-5-实际网络的同配性质" class="headerlink" title="4.2.5 实际网络的同配性质"></a>4.2.5 实际网络的同配性质</h3><p>蛋白质交互网络，神经网络等生物网络以及www等技术网络都是异配的，包括科研人员合作和电影演员合作在内的许多现实社会网络往往具有较为明显的同配特性，而不同的在线社会网络却可能呈现不同的同配、异配或接近中性的特征。例如包含1亿个节点的韩国社交网站Cyworld具有异配特征r=-0.13，而facebook则具有同配特征r=0.226.</p>
-<p>关于现实社会中的网络的同配性有很多种解释，普通人通常都期望和比自己优秀的人建立联系，而精英也倾向于和精英建立联系，此外，现实网络的同配性也可能和网络属于从属网络（二分网络）有关。</p>
-<h3 id="4-2-6-同配概念的一般化"><a href="#4-2-6-同配概念的一般化" class="headerlink" title="4.2.6 同配概念的一般化"></a>4.2.6 同配概念的一般化</h3><p>同配概念的一般化理解就是，相似的节点更加倾向于相互连接。<br>关于社会网络的同质性有两个解释，第一种是选择，即和相似的人称为朋友；第二种是影响，人们由于成为朋友而变得更加相似。社会网络分析的难点之一在于如何区分这两者的效果。难点在于，一方面我们需要知晓网络的拓扑随着时间演化的规；另一方面我们需要对结构和个体行为的联合演化建立合适的模型</p>
-<p>度的同配系数可以推广到其他属性的情形。我们用标量参数$x_i$表示节点i的某个属性。假设一个无向网络中有M条边，$A=(a_{ij})$为网络的邻接矩阵。每条边有两个端点，对所有M条边的2M个端点的属性值取平均：</p>
-<blockquote>
-<center id="_4_18">$\mu=\frac{\sum_{i,j}a_{ij}x_i}{\sum_{i,j}a_{ij}}=\frac{\sum_ik_ix_i}{\sum_ik_i}=\frac1{2M}\sum_ik_ix_i$              (4-18)</center>
-
-</blockquote>
-<p>由于度为$k_i$的一个节点是$k_i$条边的端点，因而在上式的最后一个求和中含有因子k<sub>i</sub></p>
-<p>考虑网络中每条边的两个端点i和j所对应的$(x_i,x_j)$，它们对于所有的边的协方差为</p>
-<blockquote>
-<center>$\begin{equation}cov(x_i,x_j)=\frac{\sum_{i,j}a_{ij}(x_i-\mu)(x_j-\mu)}{\sum_{i,j}a_{ij}}\\=\frac1{2M}\sum_{i,j}a_{ij}(x_ix_j-\mu{x_i  }-\mu{x_j}+\mu^2)\\ =\frac1{2M}\sum_{i,j}a_{ij}x_ix_j-\mu^2\\=\frac1{2M}\sum_{i,j}a_{ij}x_ix_j-\frac{1}{2M^2}\sum_{i,j}k_ik_jx_ix_j\\=\frac1{2M}\sum_{i,j}(a_{ij}-\frac{k_ik_j}{2M})x_ix_j\end{equation}$</center>
-令$x_i=x_j$得到$x_i$的方差如下：
-<center id="_4_19">$\begin{equation}\sigma_x^2=\frac1{2M}\sum_{i,j}(a_{ij}-\frac{k_ik_j}{2M})x_i^2\\=\frac1{2M}\sum_{i,j}(k_i\delta_{ij}-\frac{k_ik_j}{2M})x_ix_j\end{equation}$</center>
-**同配系数**就定义为归一化的协方差，即如下的Pearson相关系数：
-<center id="_4_20">$r=\frac{ucov(x_i,x_j)}{\sigma_x^2}=\frac{\sum_{i,j}(a_{ij}-\frac{k_ik_j}{2M})x_ix_j}{\sum_{i,j}(k_i\delta_{ij}-\frac{k_ik_j}{2M})x_ix_j}$(4-20)</center>
-如果属性值$x_i$就是度值$k_i$，那么同配系数为
-<center id="_4_21">$r=\frac{\sum_{i,j}(a_ij-\frac{k_ik_j}{2M})k_ik_j}{\sum{i,j}(k_i\delta_{ij}-\frac{k_ik_j}{2M})k_ik_j}$(4-21)</center>
-上式可进一步表达为
-<center id="_4_22">$r=\frac{S_1S_e-S_2^2}{S_1S_3-S_2^2}$(4-22)</center>
-其中，
-<center>$S_e=\sum_{i,j}a_{ij}k_ik_j=2\sum_{(i,j)\in{E}}k_ik_j,   S_1=\sum_ik_i   S_2=\sum_ik_i^2,S_3=\sum_ik_i^3$</center>
-
-</blockquote>
-<h2 id="4-3-社团结构与模块度"><a href="#4-3-社团结构与模块度" class="headerlink" title="4.3 社团结构与模块度"></a>4.3 社团结构与模块度</h2><h3 id="4-3-1-社团结构的描述"><a href="#4-3-1-社团结构的描述" class="headerlink" title="4.3.1 社团结构的描述"></a>4.3.1 社团结构的描述</h3><p>社团结构分析问题和计算机中的图分割和社会学中的分级聚类等有着密切的关系。社团分割算法整体分为两类，凝聚算法（Agglomerative method）和分裂算法（Divsive method）</p>
-<h3 id="4-3-2-模块度"><a href="#4-3-2-模块度" class="headerlink" title="4.3.2 模块度"></a>4.3.2 模块度</h3><p>模块度（Modularity）是近年常用的一种衡量社团划分质量的标准，其基本思想是在划分后与相应的零模型（Null Model），以度量划分的质量。网络的零模型，就是指与该网络具有某些相同的性质（如相同的边或者相同的度分布）而在其他方面完全随机的随机图模型。零模型在社团结构研究中需要仔细考量，最低阶的零模型是与原网络具有相同边数的ER随机图模型，它具有均匀度分布，所以目前分析网络社团结构时，通常是把待研究的网络与具有相同度序列的随机图也称为一阶零模型作比较。</p>
-<p>对于一个给定的实际网络，假设找到了一种社团划分，那么所有社团内部的边数的总和可计算如下：</p>
-<blockquote>
-<p><center>$Q_{real}=\frac12\sum_{ij}a_{ij}\delta(C_i,C_j)$</center><br>其中<strong>A</strong>=$(a_{ij})$是实际网络的邻接矩阵，$C_i$与$C _j$分别表示节点i与节点在网络中所属的社团：如果这两个节点属于同一个社团，$\delta$为1否则为0。</p>
-</blockquote>
-<p>对于与该实际网络对应的一个相同规模的零模型，如果用相同的社团划分，那么所有社团内部的边数总和的期望值为</p>
-<blockquote>
-<center>$Q_{null}=\frac12\sum_{ij}p_{ij}\delta(C_i,C_j)$</center>
-
-</blockquote>
-<p>其中$p_{ij}$是零模型中节点i和节点j之间连边数的期望值。</p>
-<p>一个网络的模块度定义为该网络的社团内部边数与相应的零模型内部边数之差占整个网络边数M的比例即</p>
-<center id="_4_23">$Q=\frac{Q_{real}-Q_{null}}{M}=\frac1{2M}\sum_{ij}(a_{ij}-p_{ij})\delta(C_i,C_j)$(4-23)</center>
-
-<p>在理论上，对于原网络具有相同度序列但不具有相同度相关性的一个常用的零模型——-配置模型，我们有$p_{ij}=\frac{k_ik_j}{2M}$，这里$k_i$和$k_j$分别为原网络中节点i和节点j的度。因此，常用的模块度定义为</p>
-<center id="_4_24"> $Q=\frac{1}{2M}\sum_{ij}(a_{ij}-\frac{k_ik_j}{2M})\delta(C_i,C_j)=\frac1{2M}\sum_{ij}b_{ij}\delta(C_i,C_j)$(4-24)</center>
- 其中
- <center id="_4_25">$b_{ij}=a_{ij}-\frac{k_ik_j}{2M}$(4-25)</center>
- **B**=$(b_{ij})_{N*N}$也称为**模块度矩阵**(Modularity matrix)
-
-实际网络数据通常包含的是节点间的连边信息，而不会直接给出各个点的度值。为此，下面给出模块度的一种更便于实际计算的形式。
-
-记$e_{vw}$为社团v和社团w之间的连边占整个网络边数的比例，有
-<center>$e_{vw}=\frac1{2M}\sum_{ij}a_{ij}\delta(C_i,v)\delta(C_j,w)$</center>
-
-<p>记$a_v$为一端与社团v中节点相连的连边的比例，则有</p>
-<center>$a_v=\frac1{2M}\sum_{i}k_i\delta(C_i,v)$</center>
-于是[式(4-24)](#_4_24)可以写为
-<center>$\begin{equation}Q=\frac1{2M}\sum_{ij}(a_{ij}-\frac{k_ik_j}{2M})\sum_v\delta(C_i,v)\delta(C_j,v) \\ =\sum_v[\frac1{2M}\sum_{ij}a_{ij}\delta(C_i,v)\delta(C_j,v)-\frac1{2M}\sum_ik_i\delta(C_i,v)\frac1{2M}\sum_jk_j\delta(C_j,v)]\\=\sum_v[e_{vv}-a_v^2]\end{equation}$</center>
-
-
-<p><a href="#_4_25">式4-25</a>意味着，只要跟就网络连边数统计出每个社团v内部节点之间的连边数占整个网络边数的比例$e_{vv}$，以及一端与社团v中节点相连的连边的比例$a_v$，就可计算出模块度。$a_v^2$还有一个清晰的物理意义：它表示的是在相应的具有相同度序列的配置模型中这些节点之间的连边数占整个网络边数比例的期望值。因此，<a href="#_4_25">式4-25</a>的另一种等价表达方式为：</p>
-<center id="_4_26">$Q=\sum_{v=1}^{n_e}[\frac{l_v}{M}-{(\frac{d_v}{2M})}^2]$(4-26)</center>
-其中$n_c$是社团的数量，$l_v$是社团v内部所包含的边数，$d_v$是社团v中所有节点的度值之和。
-
-
-给定一个网络，不同的社团分割所对应的模块度值一般也是不同的。极端情况是所有节点都属于一个社团，那么模块度恒为0；所有节点都属于不同的社团，模块度恒为负。给定网络的模块度最大称为这个网络的最优分割，对应的模块度记为$Q_{max}$且有$0\leq{Q_{max}}&lt;1$注意到规模较大的网络其对应的Q值也一般较大，因此不能通过模块度的大小比较不同规模网络的社团划分质量。
-
-### 4.3.3 加权和有向网络的模块度
-
-加权网络的模块度仅需将边数用权值，节点度用节点强度表示即可
-
-<center id="_4_27">$Q_w=\frac1{2W}\sum_{ij}(w_{ij}-\frac{s_is_j}{2W})\delta(C_i,C_j)=\sum_{c=1}^{n_e}{[\frac{W_c}{W}-(\frac{S_e}{2W})^2]}$(4-27)</center>
-
-<p>其中，W是网络中所有边的权值之和，$s_i$是节点i的强度，即与节点i相连的所有边的权值之和，$\omega_{ij}$是点i和j之间边的权值，$\frac{s_is_j}{(2W)}$是相应的零模型中节点i与节点j之间的连边的期望的权值，$W_c$是社团C内部所有边的权重和，$S_c$是所有与社团C内部点相关联的边的权重和。</p>
-<p>该公式推广到有向网络有</p>
-<center id="_4_28">$Q_d=\frac1M\sum_{ij}(a_{ij}-\frac{k_i^{out}k_j^{in}}{M})\delta(C_i,C_j)$</center>
-
-
-<h2 id="4-4-基于模块度的社团检测算法"><a href="#4-4-基于模块度的社团检测算法" class="headerlink" title="4.4 基于模块度的社团检测算法"></a>4.4 基于模块度的社团检测算法</h2><h3 id="4-4-1-CNM算法"><a href="#4-4-1-CNM算法" class="headerlink" title="4.4.1 CNM算法"></a>4.4.1 CNM算法</h3><p>模块度的最大值求解已经被证明是NP难题，因此出现了基于谱优化、模拟退火和极值优化等的近似算法。本节介绍了一种基于贪婪算法思想的凝聚类型的社团结构检测算法CNM算法（Clauset，Newman和Morre提出）。算法的时间复杂度为<em>$O(nlog^2n)$</em>，算法采用堆数据结构计算和更新模块度，具体描述如下：</p>
-<blockquote>
-<p>（1）初始化：初始时假设每个节点就是一个独立的社团，模块度值Q=0，初始的$e_{ij}、a_i$计算如下：</p>
-<blockquote>
-<p><center>$e_{ij}=\begin{equation}\left\{ \begin{array}{**lr**} {\frac{1}{2M},      如果i与j间有连边 } &\\ 0,其他\end{array}\right.\end{equation}$
-$a_i=\frac{k_i}{2M}$</center><br>初始的模块度增量矩阵的元素计算如下：</p>
-<p><center>$\Delta{Q_{ij}}=\begin{equation}\left\{\begin{array}{**lr**}e_{ij}-a_ia_j,\quad\quad如果节点i和j相连 &\\0,\quad其他\end{array}\right.\end{equation}$</center><br>得到初始的模块度增量矩阵后，就可以得到由它每一行的最大元素构成的最大堆H</p>
-</blockquote>
-<p>（2）从最大堆H中选择最大的$\Delta{Q}_{ij}$并合并相应的社团i和j，标记合并后的社团为j；并更新模块度增量矩阵$\Delta{Q}_{ij}$、最大堆H和辅助向量$a_j$;</p>
-<blockquote>
-<p>$1.\Delta{Q_{ij}}$的更新：删除第i行和第i列，更新第j行和第j列的元素得到</p>
-<center>$\Delta{Q}^{'}_{jk}=\begin{equation}\left\{\begin{array}{**lr**}\Delta{Q_{ik}}+\Delta{Q}_{jk},\quad社团k和社团i和社团j都相连&\\ \Delta{Q}_{ik}-2a_ja_k,\quad 社团k仅与社团i相连，不与社团j相连 &\\ \Delta{Q}_{jk}-2a_ia_k,\quad 社团k仅与社团j相连，不与社团i相连\end{array}\right.\end{equation}$</center>
-2.最大堆H的更新：更行最大堆中相应的行和列的最大元素
-3.辅助向量$a_i$的更新
-<center>$a'_j=a_i+a_j,\quad a'_i=0$</center>
-
-</blockquote>
-<p>（3）重复步骤2直到网络中所有节点都被划分到一个社团内</p>
-</blockquote>
-<h3 id="4-4-2-层次化社团检测"><a href="#4-4-2-层次化社团检测" class="headerlink" title="4.4.2 层次化社团检测"></a>4.4.2 层次化社团检测</h3><p>大规模实际网络中的节点往往具有不同的层次组织结构，大社团内部含有较小的社团。Blondel等人基于模块度概念提出了一种用于加权网络的层次化社团结构分析的凝聚算法BGLL算法，算法分为两个阶段：</p>
-<blockquote>
-<p>初始时假设网络中每个节点都是一个独立的社团。对于任意相邻的节点i和节点j，计算将节点i加入其邻居节点所在的社团的模块度增量$\Delta{Q}:$</p>
-<p><center>$\Delta{Q}=[\frac{W_c+s_{i,in}}{2W}-(\frac{S_c+s_i}{2W})^2]-[\frac{W_c}{2W}-(\frac{S_c}{2W})^2-(\frac{s_i}{2W})^2]$</center><br>其中$s_{i,in}$是节点i与社团C内其他节点所有连边的权重和。</p>
-<p>构造一个新网络，其中的节点是前一阶段划分的社团，节点之间连边的权重是两个社团之间所有连边的权重和。然后利用之前的方法对于新网络进行社团划分，直到不能划分出更高一层的社团结构为止。</p>
-</blockquote>
-
-          
+<h2 id="4-2-度相关性和同配性"><a href="#4-2-度相关性和同配性" class="headerlink" title="4.2 度相关性和同配性"></a>4.2 度相关性和同配性</h2><h3 id="4-2-1-高阶度分布的引入"><a href="#4-2-1-高阶度分布的引入" class="headerlink" title="4.2.1 高阶度分布的引入"></a>4.2.1 高阶度分布的引入</h3><p>平均度&lt;k&gt;=2M/N可以看作是网络的0阶度分布特性，他除了告诉我们有多少条边之外并没有告诉我们这些边在网络中的任何信息。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/10/01/网络科学导论（四）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
