@@ -88,7 +88,7 @@
 <meta property="og:description" content="4 度相关性与社团结构4.1 引言度分布并不能唯一的刻画一个网络，因为具有相同度分布的两个网络可能具有风场不同的其他性质或行为。为了进一步刻画网络的拓扑结构我们需要考虑更多结构信息的高阶拓扑性质。本章介绍刻画网络的二阶度分布特性（也称度相关性）几种不同的方法。 即使是联合概率分布也仍然不能完全刻画网络拓扑。一个典型例子就是复杂网络的社团结构：实际网络往往可以看作是由几个社团组成，社团内部的联系较为">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/10/01/网络科学导论（四）/04_1.jpg">
-<meta property="og:updated_time" content="2019-10-23T13:54:27.073Z">
+<meta property="og:updated_time" content="2019-11-17T15:38:34.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络科学导论（四）">
 <meta name="twitter:description" content="4 度相关性与社团结构4.1 引言度分布并不能唯一的刻画一个网络，因为具有相同度分布的两个网络可能具有风场不同的其他性质或行为。为了进一步刻画网络的拓扑结构我们需要考虑更多结构信息的高阶拓扑性质。本章介绍刻画网络的二阶度分布特性（也称度相关性）几种不同的方法。 即使是联合概率分布也仍然不能完全刻画网络拓扑。一个典型例子就是复杂网络的社团结构：实际网络往往可以看作是由几个社团组成，社团内部的联系较为">
@@ -334,11 +334,13 @@
       
         <h1 id="4-度相关性与社团结构"><a href="#4-度相关性与社团结构" class="headerlink" title="4 度相关性与社团结构"></a>4 度相关性与社团结构</h1><h2 id="4-1-引言"><a href="#4-1-引言" class="headerlink" title="4.1 引言"></a>4.1 引言</h2><p>度分布并不能唯一的刻画一个网络，因为具有相同度分布的两个网络可能具有风场不同的其他性质或行为。为了进一步刻画网络的拓扑结构我们需要考虑更多结构信息的高阶拓扑性质。本章介绍刻画网络的二阶度分布特性（也称度相关性）几种不同的方法。</p>
 <p>即使是联合概率分布也仍然不能完全刻画网络拓扑。一个典型例子就是复杂网络的社团结构：实际网络往往可以看作是由几个社团组成，社团内部的联系较为紧密，而社团间的联系却比较松散。</p>
-<h2 id="4-2-度相关性和同配性"><a href="#4-2-度相关性和同配性" class="headerlink" title="4.2 度相关性和同配性"></a>4.2 度相关性和同配性</h2><h3 id="4-2-1-高阶度分布的引入"><a href="#4-2-1-高阶度分布的引入" class="headerlink" title="4.2.1 高阶度分布的引入"></a>4.2.1 高阶度分布的引入</h3><p>平均度&lt;k&gt;=2M/N可以看作是网络的0阶度分布特性，他除了告诉我们有多少条边之外并没有告诉我们这些边在网络中的任何信息。<br><a id="more"></a><br>网络的度分布P(k)=n(k)/N可以看作是网络的1阶度分布特征&lt;k&gt;=$\sum_{k=0}^\infty{k}P(k)$，具有相同度分布的两个网络有可能具有非常不同的其他性质或是行为。</p>
+<h2 id="4-2-度相关性和同配性"><a href="#4-2-度相关性和同配性" class="headerlink" title="4.2 度相关性和同配性"></a>4.2 度相关性和同配性</h2><h3 id="4-2-1-高阶度分布的引入"><a href="#4-2-1-高阶度分布的引入" class="headerlink" title="4.2.1 高阶度分布的引入"></a>4.2.1 高阶度分布的引入</h3><p>平均度&lt;k&gt;=2M/N可以看作是网络的0阶度分布特性，他除了告诉我们有多少条边之外并没有告诉我们这些边在网络中的任何信息。</p>
+<p>网络的度分布P(k)=n(k)/N可以看作是网络的1阶度分布特征&lt;k&gt;=$\sum_{k=0}^\infty{k}P(k)$，具有相同度分布的两个网络有可能具有非常不同的其他性质或是行为。</p>
 <h3 id="4-2-2-联合概率分布"><a href="#4-2-2-联合概率分布" class="headerlink" title="4.2.2 联合概率分布"></a>4.2.2 联合概率分布</h3><p>联合概率P(j,k)定义为网络中随机选取的一条边的两个端点的度为j和i的概率，即为网络中度为j和度为i的节点之间存在边占网络中总边数的比例：</p>
 <blockquote>
 <p><center id="_4_2">$P(i,j)=\frac{m(j,k)\mu{(j,k)}}{2M}$</center><br>其中，m(i,j)是度为i和度为j的节点之间的边数；如果i=j那么$\mu(i,j)=2$否则为1</p>
 </blockquote>
+<a id="more"></a>
 <p>联合概率分布具有如下特征</p>
 <blockquote>
 <ol>
@@ -387,7 +389,7 @@
 <center id="_4_14">$&lt;k_{nn}&gt;(k)=\frac{\sum_jje_{jk}}{\sum_{j}e_{jk}}=\frac{\sum_jjq_jq_k}{q_k}=\sum_jjq_j=\sum_jj\frac{jp_j}{&lt;k&gt;}=\frac{&lt;k^2&gt;}{&lt;k&gt;}$ (4-14)</center>
 
 </blockquote>
-<p>与联合概率分布矩阵$(e_{jk})_{k_{max}*k_{max}}$相比，余平均度更为直观但不易于比较不同规模的网络。<br><img src="/2019/10/01/网络科学导论（四）/04_1.jpg"></p>
+<p>与联合概率分布矩阵$(e_{jk})_{k_{max}*k_{max}}$相比，余平均度更为直观但不易于比较不同规模的网络。<br><img src="./04_1.jpg" alt="Alt text"></p>
 <p>上图为例，FaceBook的用户节点的余平均度随着k的增加而增加，可知facebook的用户网络是同配的。作为对比，4-5中的水平虚线是指在假设假设网络不具有度相关性时的期望余平均度&lt;k<sup>2</sup>&gt;/&lt;k&gt;=635。另外一个值得关注的点时途中实线和虚线的交点在k=700附近，意味着大体上来讲除非你的朋友数大于700，否则你的朋友比你拥有更多的朋友的概率很大，而在facebook中92%的用户的朋友数都远低于这个值</p>
 <p>上图的第二幅图表明时k=10，50，100，500时的facebook网络的条件概率$P_c(j|k)$其中纵坐标是线性坐标，横坐标是对数坐标。随着k的增加，曲线的峰值也逐渐向右靠拢，表明度大的节点个更为倾向于连接度大的节点，从而表明网络是同配的，此外除了k=500的情形，其余的图像的都显示条件概率分布的均值都明显大于假设网络不具有度相关性时的期望条件概率分布的均值$k’P(k’)/&lt;k&gt;$ </p>
 <h3 id="4-2-4-同配系数"><a href="#4-2-4-同配系数" class="headerlink" title="4.2.4 同配系数"></a>4.2.4 同配系数</h3><p>网络是度县官的就意味着$e_{jk}$与$q_jq_k$之间不恒等。可以考虑采用两者之间的差的大小来刻画网络的同配或者异配程度，即如下定义度的相关函数</p>
@@ -511,6 +513,54 @@ $a_i=\frac{k_i}{2M}$</center><br>初始的模块度增量矩阵的元素计算�
 <h4 id="2-寻找网络中的派系"><a href="#2-寻找网络中的派系" class="headerlink" title="2.寻找网络中的派系"></a>2.寻找网络中的派系</h4><p>在派系过滤算法中，采用由大到小、迭代回归的算法来寻找网络中的派系。首先，从网络中各个节点的度可以判断网络中可能存在的最大全耦合子图的大小s。从网络中一个节点出发，找到所有包含该节点的大小为s的派系后删除该节点以及与之相连的边（以免多次找到同一个派系）。然后，另选一个节点，重复上述步骤，直到网络中没有节点为止。至此找到了网络中大小为s的所有派系。接着逐渐减小s(每次s减小1)，再用上述方法便可寻找到网络中所有大小不同的派系。</p>
 <p>这里关键在于如何从一个节点v出发寻找包含它的所有大小为s的派系。为此，首先定义两个集合A和B：集合A为包括节点v在内的两两相连的所有节点的集合，而集合B则为与集合A中各节点都相连的节点的集合，为了避免重复选到某个节点，对集合A和B中的节点都按节点的序号顺序排列。</p>
 <p>寻找包含节点v的所有大小为s的派系的迭代回归算法如下：<br>1.初始集合A={v}，B={v的邻居}；<br>2.从集合B中移动一个节点到集合A，同时删除集合B中不再与集合A中所有节点相连的节点；<br>3.如果在集合A的大小未达到s之前，集合B已为空集，或者集合A和B为已有的一个较大派系中地子集，则停止计算，返回上一部。否则，当集合A地大小达到s，就得到一个新的派系，记录该派系，然后发回上一步，继续寻找包含节点v的新的派系。</p>
+<h4 id="利用派系寻找k-派系社团"><a href="#利用派系寻找k-派系社团" class="headerlink" title="利用派系寻找k-派系社团"></a>利用派系寻找k-派系社团</h4><p>找到网络中的派系以后，可得到派系的重叠矩阵，该矩阵也是对称阵，对角线上的元素对应派系的大小 。在该矩阵中将对角线上值小于k，非对角线上元素小于k-1的元素置为0，其他元素置为1，就可得到k-派系社团的邻接矩阵。各个连通的部分为k派系社团。</p>
+<h4 id="实际网络中的情形"><a href="#实际网络中的情形" class="headerlink" title="实际网络中的情形"></a>实际网络中的情形</h4><p>实际网络中，规模较大的网络往往在内部节点产生动态变化时较为稳定，而小规模网络则要保证内部节点的相对稳定才可。</p>
+<h3 id="4-5-3-连边社团检测算法"><a href="#4-5-3-连边社团检测算法" class="headerlink" title="4.5.3 连边社团检测算法"></a>4.5.3 连边社团检测算法</h3><p>2010年Ahn、Bagrow、Lehmann提出了检测具有层次性和层叠性网络的新结构：社团是边的集合而非节点的集合。这样定义的好处在于：尽管一个节点可以属于多个组织，但一条边通常对应明确的含义从而只能属于一个社团。在网络的树图表示中，如果每一个叶子对应一个节点，那么就无法用单个树完整的表示网络的层次结构，而如果用树图的每一个叶子表示一条边，就可以把相应的分支作为社团。在连边树中，由于每条边的节点是的位置是唯一确定的，从而只能属于一个社团。而由于一个节点可以与多条边相连，如果这条边属于不同的社团那么这个节点也相应地属于不同的社团，从而有效地解决重叠节点的问题。此外，通过不同的阈值分割树图可以得到层次化的连边社团结构。</p>
+<p>连边社团检测算法的基本操作步骤就是把具有一定相似度的连边合并为一个社团。为此需要给吃连边相似度的定量刻画。假设我们把网络中的每一条边都单独视为一个社团，现在就要把其中两条边合并成一个社团，一个自然的要求就是这两条边有一个公共节点。具有一个公共节点k的一对连边$e_{ik}、e_{jk}$之间相似度的合理定义就是考虑节点对i和j的相似度。第五章将介绍节点对之间相似性的刻画方法。定义连边的相似度如下：</p>
+<center id="_4_35">$S(e_{ik},e_{jk})=\frac{|n_+(i)\cup{n_{+}(j)}|}{|n_+(i)\cap{n_+(j)}|}\quad\quad (4-35)$</center>
+其中$n_+(i)$为节点i及其所有邻居节点的集合。
+
+利用连边相似度定义，就可以使用分级聚类方法来检测网络社团结构。具体步骤如下：
+> (1) 计算网络中所有连边对（即至少拥有一个共同节点地连边对）的相似度，并根据相似度的值按降序排列这些连边对。
+> (2) 按排列次序依次将连边对所属社团进行合并，将合并过程以以树图的形式记录下来。这里，如果一些连边对具有相同的相似度，那么就在同一步骤合并。
+> (3) 社团的合并过程可进行到某一步为止
+
+
+为了得到最佳的社团结构，需要确定分割树图地最佳位置，或者等价地，确定社团合并过程进行到哪一步是最佳的。为此，基于社团内部的连边密度定义一个目标函数，称为**划分密度(Partition density)D**。假设一个包含M条连边的网络被划分为C个社团{P1,P2,.....,P<sub>c</sub>}，其中社团P<sub>c</sub>包含m<sub>c</sub>条连边和n<sub>c</sub>个节点，它所对应的网络的划分密度就定义为
+<center id="_4-36">$D_c=\frac{m_c-(n_c-1)}{n_c(n_c-1)/2-(n_c-1)}\quad\quad(4-36)$</center>
+其中$n_c-1$是使得$n_c$个节点构成连通图所需要的最少的边数，而$n_c(n_c-1)/2$是节点间可能存在的最大的边数。这里如果$n_c=2$，那么这个网络的划分密度就定义为0（$D_c=0$）。整个网络的划分密度就定义为$D_c$的加权和：
+
+<center id="_4_37">$D=\frac{1}{M}\sum_cm_cD_c=\frac{2}{M}\sum_{c}m_c\frac{m_c-(n_c-1)}{(n_c-2)(n_c-1)}\quad\quad(4-37)$</center>
+由于上式求和中的每一项都局限在社团内部，从而使得划分密度避免块度具有分辨率限制的问题。通过计算连边树图每一层所对应的划分密度或者直接优化划分密度就可以得到最佳的社团划分。注意到D的最大值是1，此时所有的社团都是全耦合关系。另一方面，如果每一个社团都是一棵树（边数最少的连通子图）。那么D等于0，理论上来讲D是有可能是负值的，其下届为-2/3，这是由于两条不相连的边组成的社团所对应的D<sub>c</sub>=-2/3,当然在连边社团算法中不会出现这一情形。
+
+采用连边树图的另外一个好处是，不仅在对应于最大划分密度的最优分割处，而且在树图的其他分割线也能得到有意义的社团结构，从而揭示出网络的层次化社团结构特征。
+
+将连边地社团分布转化为节点地社团分布就能找出那些骑墙节点。即使两个节点同时属于不同的社团也能后识别出这条边地多重含义，尽管在连边的社团划分时一条边只能属于一个社团。
+
+
+### 4.5.4
+#### 1.基准图法
+社团检测算法的好坏取决于能否在可接受的范围内给出划分结果和算法能否高质量的实际网络的社团结构，一个方法是人为的构造出一个基准图，基准图的代表是Zachary 空手道俱乐部网络（Zachary's karate club network）。这样一个网络需要具备很多特殊的情况，空手道网络的问题在于其规模太小。
+
+近年来也有一些人工构造出来的网络，例如预设l-划分模型（Planted l-partition model）构造如下：
+> 网络包含N=g **·** l个节点 ，分为l组，每组包含g个节点。同组的任意两个节点之间的连接概率均为$p_{in}$,不同组的任意两个节点之间的连接概率均为$p_{out}$。这意味着与每组对应的子图是一个ER随机图（详见第7章）。网络节点的平均度为
+> <center>$\langle{k}\rangle=p_{in}(g-1)+p_{out}g(l-1)$</center>
+> 如果$p_{in}-p_{out}&gt;0$，意味着每组内部节点之间的连边对更加稠密而不同组之间的连边相对稀疏，从而说明网络具有社团结构；而$p_{in}-p_{out}$值越大，网络社团结构就越明显。常用的一组参数为$l=4,g=32,\langle{k}\rangle=16$从而N=128，$p_{in}+3p_{out}\approx0.5$。在具体计算中，通常使用节点的组内平均度和组外平均度这两个参数
+> <center>$z_{in}=p_{in}(g-1)=31p_{in},\quad z_{out}=p_{out}g(l-1)=96p_{out}$</center>
+
+<p>基准图的问题在于其和实际网络的差异，基准图中的节点度分布是均匀的</p>
+<h4 id="2-元数据方法"><a href="#2-元数据方法" class="headerlink" title="2. 元数据方法"></a>2. 元数据方法</h4><p>举例：一方面如果两个商品被同时购买，那么这两件商品间就有一条边，此外网站上通常会提出商品所属的分类以及用户对其添加的标签等信息，这些信息就被称为元数据。<br>为了定量比较不同社团划分算法的效果，可以引入以下几个指标：</p>
+<ol>
+<li><p>社团质量（Community quality）。相似的阶段间应该共享尽可能多的元数据。节点对相似性的富裕度（Enrichment）定义为<br><center>$\frac{\langle{\mu(i,j)}\rangle_{同一社团中所有的i,j}}{\langle{\mu(i,j)\rangle}_{网络中的所有节点对i,j}}$</center><br>其中$\mu(i,j)$是基于元数据的节点i和节点j之间的相似度，对于不同的网络可以有不同的定义。富裕度是位于一个社团中的所有节点对之间的平均元数据相似度，富裕度越大说明社团越紧密。</p>
+</li>
+<li><p>重叠质量（Overlap quality）对于网络中每一个节点i我们提取一个标量（称为重叠元数据），它对应于节点i所属的真实社团的的数目。例如，在单词关联网络中，每个社团对应于一组拥有相同话题的单词。一个单词拥有的定义越多，我们期望这个单词属于的话题也越多。因此可以根据某个社团划分算法得到的节点所属的社团数目和该节点的元数据中的重叠信息之间的交互信息（Mutual information）来衡量重叠质量。</p>
+</li>
+<li><p>社团覆盖（Community coverage）。计算属于非平凡社团（即有3个或以上节点的社团）的节点所占的比例</p>
+</li>
+<li>重叠覆盖（Overlap coverage）。计算每个节点所属的非平凡社团的数目的平均值。两个算法可能具有相同的社团覆盖，但是一个算法有可能比另一个算法提取出更多的重叠节点。对于不具有检测重叠性的社团算法，重叠覆盖度与社团覆盖度是一样的。</li>
+</ol>
+<p>对上述指标的取值归一化，归一化的值之和就是算法的复合性能（Composite performance）</p>
+<p>社团划分的算法还有块模型（Block models）和矩阵分解方法。这两类算法不仅可以用于社团检测，也可用于链路预测（Link prediction）和网络坐标系统（Network coordinate system）等，从而揭示出看似不同问题之间的内在联系</p>
 
       
     </div>
@@ -676,7 +726,7 @@ $a_i=\frac{k_i}{2M}$</center><br>初始的模块度增量矩阵的元素计算�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#4-度相关性与社团结构"><span class="nav-text">4 度相关性与社团结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-引言"><span class="nav-text">4.1 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-度相关性和同配性"><span class="nav-text">4.2 度相关性和同配性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1-高阶度分布的引入"><span class="nav-text">4.2.1 高阶度分布的引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-2-联合概率分布"><span class="nav-text">4.2.2 联合概率分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-3-余平均度"><span class="nav-text">4.2.3 余平均度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-4-同配系数"><span class="nav-text">4.2.4 同配系数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-5-实际网络的同配性质"><span class="nav-text">4.2.5 实际网络的同配性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-6-同配概念的一般化"><span class="nav-text">4.2.6 同配概念的一般化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-社团结构与模块度"><span class="nav-text">4.3 社团结构与模块度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1-社团结构的描述"><span class="nav-text">4.3.1 社团结构的描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-2-模块度"><span class="nav-text">4.3.2 模块度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-基于模块度的社团检测算法"><span class="nav-text">4.4 基于模块度的社团检测算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-1-CNM算法"><span class="nav-text">4.4.1 CNM算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-2-层次化社团检测"><span class="nav-text">4.4.2 层次化社团检测</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-其他社团检测算法"><span class="nav-text">4.5 其他社团检测算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-1-模块度的局限性"><span class="nav-text">4.5.1 模块度的局限性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-2-派系分割算法"><span class="nav-text">4.5.2 派系分割算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-k-派系社团的定义"><span class="nav-text">1.k-派系社团的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-寻找网络中的派系"><span class="nav-text">2.寻找网络中的派系</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#4-度相关性与社团结构"><span class="nav-text">4 度相关性与社团结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-引言"><span class="nav-text">4.1 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-度相关性和同配性"><span class="nav-text">4.2 度相关性和同配性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1-高阶度分布的引入"><span class="nav-text">4.2.1 高阶度分布的引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-2-联合概率分布"><span class="nav-text">4.2.2 联合概率分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-3-余平均度"><span class="nav-text">4.2.3 余平均度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-4-同配系数"><span class="nav-text">4.2.4 同配系数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-5-实际网络的同配性质"><span class="nav-text">4.2.5 实际网络的同配性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-6-同配概念的一般化"><span class="nav-text">4.2.6 同配概念的一般化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-社团结构与模块度"><span class="nav-text">4.3 社团结构与模块度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1-社团结构的描述"><span class="nav-text">4.3.1 社团结构的描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-2-模块度"><span class="nav-text">4.3.2 模块度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-基于模块度的社团检测算法"><span class="nav-text">4.4 基于模块度的社团检测算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-1-CNM算法"><span class="nav-text">4.4.1 CNM算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-2-层次化社团检测"><span class="nav-text">4.4.2 层次化社团检测</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-其他社团检测算法"><span class="nav-text">4.5 其他社团检测算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-1-模块度的局限性"><span class="nav-text">4.5.1 模块度的局限性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-2-派系分割算法"><span class="nav-text">4.5.2 派系分割算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-k-派系社团的定义"><span class="nav-text">1.k-派系社团的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-寻找网络中的派系"><span class="nav-text">2.寻找网络中的派系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用派系寻找k-派系社团"><span class="nav-text">利用派系寻找k-派系社团</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实际网络中的情形"><span class="nav-text">实际网络中的情形</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-3-连边社团检测算法"><span class="nav-text">4.5.3 连边社团检测算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-元数据方法"><span class="nav-text">2. 元数据方法</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
