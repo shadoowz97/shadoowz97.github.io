@@ -262,6 +262,264 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/07/28/Repo-原理和使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shadoowz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shadoowz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/07/28/Repo-原理和使用/" itemprop="url">Repo 原理和使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-28T15:18:39+08:00">
+                2021-07-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/06/24/java-lock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shadoowz">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shadoowz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/06/24/java-lock/" itemprop="url">java-lock</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-24T21:19:58+08:00">
+                2021-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Java-锁机制"><a href="#Java-锁机制" class="headerlink" title="Java 锁机制"></a>Java 锁机制</h1><p><center><h2 style="color:purple">背景知识</h2></center></p>
+<hr style="color:purple">
+
+<h3 style="color:purple">指令流水线</h3>
+
+
+<p>CPU的基本工作是知性存储的指令序列。程序的执行过程实际上是不断地取出指令、分析指令、执行指令的过程。</p>
+<p>几乎所有的冯·诺伊曼型计算机的CPU，其工作都可以分为5个阶段：取指令、指令译码、指令执行、访存取数和结果写回。<br><img src="/2021/06/24/java-lock/pipline.jpg"></p>
+<p>现代处理器的体系结构中，采用了流水线的处理方式对指令进行处理。指令包含了很多阶段，对其进行拆解，每个阶段由专门的硬件电路、寄存器来处理，就可以实现流水线处理。实现更高的CPU吞吐量，但是由于流水线本身的额外开销，可能会增加延迟。</p>
+<h3 style="color:purple">CPU多级缓存</h3>
+
+
+<img src="/2021/06/24/java-lock/memory_model.jpg">
+<p>在计算机系统中，CUP高速缓存（CPU Cache，简称缓存）是用于减少处理器访问内存所需平均时间的部件。在金字塔式存储体系中它位于自顶向下的第二层，仅次于CPU寄存器。其容量远小于内存，但速度却可以接近处理器的频率。</p>
+<p>当处理器发出内存访问请求时，会先查看缓存内是否由请求数据。如果存在（缓存命中），则不经过访问内存直接返回该数据；如果不存在（缓存失效），则先要把内存当中的数据读到缓存当中，再将其返回处理器。</p>
+<p>缓存之所以有限，主要是由于程序运行时对内存的访问呈现局限性的特征（Locality）特征。这种局部性既包括空间局部性（Space Locality），也包括时间局部性（Temporal Locality）。有效利用这种局部性，缓存可以达到极高的命中率。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/06/24/java-lock/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/19/常用命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -332,8 +590,7 @@
 
       
         
-          
-            <h2 id="一、文件和目录"><a href="#一、文件和目录" class="headerlink" title="一、文件和目录"></a>一、文件和目录</h2><h3 id="1-cd-命令"><a href="#1-cd-命令" class="headerlink" title="1.cd 命令"></a>1.cd 命令</h3><blockquote>
+          <h2 id="一、文件和目录"><a href="#一、文件和目录" class="headerlink" title="一、文件和目录"></a>一、文件和目录</h2><h3 id="1-cd-命令"><a href="#1-cd-命令" class="headerlink" title="1.cd 命令"></a>1.cd 命令</h3><blockquote>
 <p> 用于切换当前目录，参数是要切换到的目录的路径，可以是相对路径，可以是绝对路径</p>
 <ul>
 <li>cd /home 进入 ‘/home’ 目录</li>
@@ -356,160 +613,13 @@
 <li>ls -R 列出全部文件包括子目录</li>
 </ul>
 </blockquote>
-<h3 id="4-cp-命令"><a href="#4-cp-命令" class="headerlink" title="4.cp 命令"></a>4.cp 命令</h3><blockquote>
-<p>用于复制文件，copy，可以把多个文件一次性复制到一个目录之下：</p>
-<ul>
-<li>-a：将文件的特性一起复制</li>
-<li>-p：连同文件的属性一起复制，而非使用默认方式与-a相似用于备份</li>
-<li>-i：若目标文件已经存在时，在覆盖时会先询问操作的进行</li>
-<li>-r：递归持续符之，用于目录的复制行为</li>
-<li>-u：目标文件与源文件有差异时才会复制</li>
-</ul>
-</blockquote>
-<h3 id="5-mv-命令"><a href="#5-mv-命令" class="headerlink" title="5.mv 命令"></a>5.mv 命令</h3><blockquote>
-<p>用于移动文件、目录或更名，move</p>
-<ul>
-<li>-f：强制，如果目标文件已经存在，不会询问而是直接覆盖</li>
-<li>-i：互动模式，在删除前会询问用户是否操作</li>
-<li>-r：递归删除，常用于目录删除</li>
-</ul>
-</blockquote>
-<h2 id="二、查看文件内容"><a href="#二、查看文件内容" class="headerlink" title="二、查看文件内容"></a>二、查看文件内容</h2><h3 id="7-cat-命令"><a href="#7-cat-命令" class="headerlink" title="7.cat 命令"></a>7.cat 命令</h3><blockquote>
-<p>用于查看文本文件的内容，后接要查看的文件名，通常可用管道与more和less一起使用：</p>
-<ul>
-<li>cat file1 从第一个字节开始正向查看文件内容</li>
-<li>tac file1 从最后一行开始反向查看文件内容</li>
-<li>cat n file1 标示文件的行数</li>
-<li>more file1 查看一个长文件的内容</li>
-<li>head -n 2 file1 查看前两行</li>
-<li>tail -n 2 file1 查看一个文件的最后两行</li>
-<li>tail -n +1000 从第1000行开始显示</li>
-<li>cat filename | head -n 3000 | tail -n +1000 显示从1000行到3000行的内容</li>
-<li>cat filename | tail -n +300 | head -n 1000 从3000行开始，显示1000行的内容</li>
-</ul>
-</blockquote>
-<h2 id="三、-文件搜索"><a href="#三、-文件搜索" class="headerlink" title="三、 文件搜索"></a>三、 文件搜索</h2><h3 id="8-find-命令"><a href="#8-find-命令" class="headerlink" title="8.find 命令 ()"></a>8.find 命令 ()</h3><blockquote>
-<ul>
-<li>find / -name file1 从’/‘开始进入根文件系统搜索文件和目录 </li>
-<li>find / -user user1 搜索属于用户1的文件和目录</li>
-<li>find /usr/bin -type f -atime +100 搜索在过去100天内未被使用过的文件</li>
-<li>find /usr/bin -type f -mtime -10 搜索在10天内被创建或修改过的文件</li>
-<li>whereis halt 显示一个二进制文件、源码或man的位置</li>
-<li>which halt 显示一个二进制文件或可执行文件的完整路径</li>
-</ul>
-</blockquote>
-<h2 id="四、文件的权限"><a href="#四、文件的权限" class="headerlink" title="四、文件的权限"></a>四、文件的权限</h2><p><code>使用”+”表示授予权限，使用”-“用于取消权限</code></p>
-<h3 id="9-chmod命令"><a href="#9-chmod命令" class="headerlink" title="9.chmod命令"></a>9.chmod命令</h3><blockquote>
-<ul>
-<li>ls -lh 显示权限</li>
-<li>chmod ugo+rwx directory1 设置目录所有人(u)，群组(g)以及其他人以读(r,4)、写(w,2)、执行(x,1)的权限</li>
-</ul>
-</blockquote>
-<h3 id="10-chown命令"><a href="#10-chown命令" class="headerlink" title="10. chown命令"></a>10. chown命令</h3><blockquote>
-<p>改变文件的所有者</p>
-<ul>
-<li>chown user1 file1 改变一个文件的所有人属性</li>
-<li>chown -R usr1 directory1 改变一个目录的所有人属性并同时改变该目录下所有文件的属性</li>
-<li>chown user1:group1 file1 改变一个文件所属的人和群组</li>
-</ul>
-</blockquote>
-<h3 id="11-chgrp-命令"><a href="#11-chgrp-命令" class="headerlink" title="11.chgrp 命令"></a>11.chgrp 命令</h3><blockquote>
-<p>改变文件所属用户组：</p>
-<ul>
-<li>chgrp group1 file1 改变文件的群组</li>
-</ul>
-</blockquote>
-<h2 id="五、文本处理"><a href="#五、文本处理" class="headerlink" title="五、文本处理"></a>五、文本处理</h2><h3 id="12-grep-命令"><a href="#12-grep-命令" class="headerlink" title="12. grep 命令"></a>12. grep 命令</h3><blockquote>
-<p>分析一行的信息，若当中有我们需要的信息，就将该行显示出来，该命令通常与管道命令一起使用，用于多一些命令的输出进行筛选加工等等：</p>
-<ul>
-<li>grep Aug /var/log/message 在文件 ‘/var/log/messgae’中查找关键词”Aug”</li>
-<li>grep [0-9] /var/log/message 在文件’/var/log/message’中查找所有包含数字的行</li>
-<li>grep ^Aug /var/log/message 在文件’/var/log/message’中查找所所有以Aug开头的词会</li>
-<li>sed ‘s/stringa1/stringa2/g’ example.txt 将example.txt文件中的string1替换成string2</li>
-<li>sed ‘/^$/d’ example.txt 从example.txt 文件中删除所有空白行</li>
-</ul>
-</blockquote>
-<h3 id="13-paste-命令"><a href="#13-paste-命令" class="headerlink" title="13. paste 命令"></a>13. paste 命令</h3><blockquote>
-<ul>
-<li>paste file1 file2 合并两个文件或两栏的内容</li>
-<li>paste -d ‘+’ file1 file2 合并两个文件或两栏的内容，中间用<code>+</code>区分</li>
-</ul>
-</blockquote>
-<h3 id="14-sort-命令"><a href="#14-sort-命令" class="headerlink" title="14. sort 命令"></a>14. sort 命令</h3><blockquote>
-<ul>
-<li>sort file1 file2 排序两个文件的内容</li>
-<li>sort file1 file2 | uniq 取出两个文件的并集，重复的仅保留一份</li>
-<li>sort file1 file2 | uniq -u 删除交集，留下其他的行</li>
-<li>sort file1 file2 | uniq -d 取出两个文件的交集</li>
-</ul>
-</blockquote>
-<h3 id="15-comm-命令"><a href="#15-comm-命令" class="headerlink" title="15.comm 命令"></a>15.comm 命令</h3><blockquote>
-<ul>
-<li>comm -1 file1 file2 比较两个文件的内容只删除’file1’所包含的内容</li>
-<li>comm -2 file1 file2 比较两个文件的内容只删除’file2’所包含的内容</li>
-<li>comm -3 file1 file2 比较两个文件的内容只删除两个文件共有的内容</li>
-</ul>
-</blockquote>
-<h2 id="六、打包和压缩文件"><a href="#六、打包和压缩文件" class="headerlink" title="六、打包和压缩文件"></a>六、打包和压缩文件</h2><h3 id="16-tar命令"><a href="#16-tar命令" class="headerlink" title="16.tar命令"></a>16.tar命令</h3><blockquote>
-<p>对文件进行打包，默认情况下并不会压缩，如果指定了相应的参数，他还会调用相应的压缩程序（如gzip和bzip等）进行压缩和解压：</p>
-<ul>
-<li>-c：新建打包文件</li>
-<li>-t：查看打包文件的内容含有哪些文件名</li>
-<li>-x：解打包或解压缩的功能，可以搭配-C （大写）指定解压的目录，注意-c，-t，-x不能同时放在同一条命令中</li>
-<li>-j：通过bzip2的命令进行压缩/解压缩</li>
-<li>-z：通过gzip的支持进行压缩/解压缩</li>
-<li>-v：在压缩/解压缩过程中，将正在处理的文件名显示出来</li>
-<li>-f：filename：filename为要处理的文件</li>
-<li>-C dir：指定压缩/解压缩的目录dir</li>
-<li>压缩：tar -jcv -f filename.tar.bz2要被处理的文件或目录名称</li>
-<li>查询：tar -jtv -f filename.tar.bz2</li>
-<li>解压：tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录</li>
-<li>bunzip2 file1.bz2 解压缩一个叫做’files.bz2’的文件</li>
-<li>bzip2 file1 压缩一个叫做’file1’的文件</li>
-<li>gunzip file1.gz 解压缩一个叫做’file1.gz’的文件</li>
-<li>gzip file1 压缩一个叫做’file1’的文件</li>
-<li>gzip -9 file1 最大程度压缩</li>
-<li>rar a file1.rar test_file 创建一个叫做’file1.rar‘的包</li>
-<li>rar a file1.rar file1 file2 dir1 同时压缩’file1‘，’file2‘以及目录’dir1’</li>
-<li>rar x file1.rar 解压rar包</li>
-<li>zip file1.zip file1 创建一个zip格式的压缩包</li>
-<li>unzip file1.zip 解压一个zip格式压缩包</li>
-<li>zip -r file1.zip file1 file2 dir1 将几个文件和目录同时压缩成一个zip格式的压缩包</li>
-</ul>
-</blockquote>
-<h2 id="七、系统和关机"><a href="#七、系统和关机" class="headerlink" title="七、系统和关机"></a>七、系统和关机</h2><h3 id="17-开关机命令"><a href="#17-开关机命令" class="headerlink" title="17 开关机命令"></a>17 开关机命令</h3><blockquote>
-<ul>
-<li>shutdown -h now 关系系统</li>
-<li>init 0 关闭系统</li>
-<li>telinit 0 关闭系统</li>
-<li>shutdown -h hours:minutes &amp;定时关闭系统</li>
-<li>shutdown -c 取消按预定时间关闭系统</li>
-<li>shutdown -r now 重启</li>
-<li>reboot 重启</li>
-<li>logout 注销</li>
-<li>time 测算一个命令的执行时间<h2 id="八、进程相关命令"><a href="#八、进程相关命令" class="headerlink" title="八、进程相关命令"></a>八、进程相关命令</h2><h3 id="18-jps命令"><a href="#18-jps命令" class="headerlink" title="18 jps命令"></a>18 jps命令</h3>显示当前系统的java进程情况，及其id号:</li>
-<li>jps (Java Virtual Machine Process Status Tool) 是jdk1.5 提供的心事所有java进程的pid的命令<h3 id="19-ps命令"><a href="#19-ps命令" class="headerlink" title="19 ps命令"></a>19 ps命令</h3>用于将某个时间点的进程运行情况选取下来并输出，process之意：</li>
-<li>-A ：所有进程均显示出来</li>
-<li>-a ：不与terminal有关的所有进程</li>
-<li>-u：有效用户的相关进程</li>
-<li>-x：一般与参数a一起使用，可列出完整信息</li>
-<li>-l：较长，较详细的将pid信息列出<blockquote>
-<p>ps aux 查看系统所有进程数据<br>ps ax 查看不与terminal相关的所有进程<br>ps -lA 查看系统所有进程的数据<br>ps axjf 查看连同一部分进程树状态</p>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-<h3 id="20-kill命令"><a href="#20-kill命令" class="headerlink" title="20 kill命令"></a>20 kill命令</h3><blockquote>
-<p>用于向某个工作（%jobnumber）或是某个PID传送一个信号，它通常与ps和jobs命令一起使用</p>
-</blockquote>
-<h3 id="21-killall命令"><a href="#21-killall命令" class="headerlink" title="21 killall命令"></a>21 killall命令</h3><blockquote>
-<p>向一个命令启动的进程发送一个信号</p>
-</blockquote>
-<h3 id="22-top命令"><a href="#22-top命令" class="headerlink" title="22 top命令"></a>22 top命令</h3><blockquote>
-<p>是linux下常用的性能分析工具，能够事实显示系统中各进程的资源占用情况<br>kill -9 pid<br>killall -9 程序名称<br>pkill 程序的名字<br>查看进程端口号<br>netstat -tunlp | grep 端口号 </p>
-</blockquote>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/05/19/常用命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1460,7 +1570,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1473,7 +1583,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
